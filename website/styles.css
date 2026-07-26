@@ -545,6 +545,28 @@ a {
 
 /* ------------------------------------------------------------ small screens */
 
+@media (max-width: 46rem) {
+  /* Keep the masthead on one line: the wordmark stays whole and the in-page anchor
+     drops, since the section it points at is a short scroll away anyway. */
+  .wordmark {
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+
+  .masthead {
+    padding-block: 1.25rem;
+  }
+
+  .masthead nav {
+    gap: 1.1rem;
+    font-size: 0.85rem;
+  }
+
+  .masthead nav a[href^="#"] {
+    display: none;
+  }
+}
+
 @media (max-width: 40rem) {
   .announcer {
     grid-template-columns: 1fr;
