@@ -28,7 +28,8 @@
     Battery Full Alarm
   </a>
   <nav>
-    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="/changelog">Changelog</a>
     <a href="/privacy">Privacy</a>
     <a href="https://github.com/FarhanAsgharr/battery-full-alarm">Source</a>
   </nav>
@@ -41,7 +42,7 @@
     flipping direction for Urdu and Arabic.
   -->
   <section class="shell hero">
-    <p class="eyebrow">Android · works offline</p>
+    <p class="eyebrow">Android · works offline · v1.1.0</p>
     <h1>Your phone tells you when it's <em>done charging</em>.</h1>
     <p class="lede">
       Leave it charging and forget about it. At 100% it sounds an alarm and says so out
@@ -67,15 +68,27 @@
 
     <div class="actions">
       <a class="btn btn-primary"
-         href="https://github.com/FarhanAsgharr/battery-full-alarm/releases">
-        Download the APK
+         href="https://github.com/FarhanAsgharr/battery-full-alarm/releases/tag/v1.1.0">
+        Download v1.1.0
       </a>
       <a class="btn btn-ghost"
          href="https://github.com/FarhanAsgharr/battery-full-alarm">
         Read the source
       </a>
     </div>
-    <p class="actions-note">Android 8.0+ · MIT licence · no account required</p>
+    <p class="actions-note">Android 8.0+ · 16–20 MB · MIT licence · no account required</p>
+
+    <!--
+      Stated up front, not buried. Anyone who installs a debug-signed build and later
+      wants the Play version has to uninstall and lose their data, so they deserve to
+      know before they tap Download rather than after.
+    -->
+    <aside class="caveat">
+      <strong>Preview build.</strong> These APKs are signed with a debug key, because no
+      upload keystore exists yet. They install and run normally, but Android will refuse
+      to update them from a properly-signed release later — that needs an uninstall,
+      which clears your settings and history.
+    </aside>
   </section>
 
   <!-- A real sequence, so the numbering carries information. -->
@@ -130,23 +143,103 @@
     </ol>
   </section>
 
+  <section class="shell band" id="features">
+    <h2>Everything it does</h2>
+    <p class="sub">All of it offline, all of it stored only on your phone.</p>
+
+    <div class="features">
+      <div class="feature">
+        <h3>Monitoring</h3>
+        <ul>
+          <li>Live battery level, charging state and charger type</li>
+          <li>Temperature, voltage, health and cell technology</li>
+          <li>Runs with the screen off and the app closed</li>
+          <li>Optional restart after a reboot or an app update</li>
+        </ul>
+      </div>
+
+      <div class="feature">
+        <h3>The announcement</h3>
+        <ul>
+          <li>Write your own sentence, with name and battery-level tags</li>
+          <li>Adjustable speech speed and pitch</li>
+          <li>Uses the text-to-speech engine already on your phone</li>
+          <li>Preview it before you rely on it</li>
+        </ul>
+      </div>
+
+      <div class="feature">
+        <h3>Alarm sounds</h3>
+        <ul>
+          <li>Any alarm ringtone on the device</li>
+          <li>Import your own audio file</li>
+          <li>Record a clip in the app, up to 30 seconds</li>
+          <li>Remove any sound from the list, and restore them later</li>
+        </ul>
+      </div>
+
+      <div class="feature">
+        <h3>How it alerts</h3>
+        <ul>
+          <li>Repeat every 5, 10, 15, 30 or 60 seconds</li>
+          <li>Alarm volume, independent of your media volume</li>
+          <li>Vibration and camera-flash, each switchable</li>
+          <li>Stop button in the notification</li>
+        </ul>
+      </div>
+
+      <div class="feature">
+        <h3>History and statistics</h3>
+        <ul>
+          <li>Every charging session, with levels and duration</li>
+          <li>How long it took to reach 100%, and how many alarms played</li>
+          <li>Daily, weekly and monthly summaries</li>
+          <li>Swipe to delete, or clear the lot</li>
+        </ul>
+      </div>
+
+      <div class="feature">
+        <h3>Interface</h3>
+        <ul>
+          <li>English, Urdu, Arabic and Hindi</li>
+          <li>Right-to-left layout for Urdu and Arabic</li>
+          <li>Material 3, light, dark or follow the system</li>
+          <li>Warns you when Android settings would block an alarm</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section class="shell band">
     <h2>On the phone</h2>
-    <p class="sub">Material 3, light and dark, in English, Urdu, Arabic and Hindi —
-       right-to-left included.</p>
+    <p class="sub">Screenshots from the current build, v1.1.0.</p>
     <div class="shots">
       <div class="shot">
         <figure>
           <img src="img/home.png" width="1080" height="2400" loading="lazy"
-               alt="The home screen showing 87 percent charging, with monitoring switched on and the current charging session.">
-          <figcaption>Live battery state and the current session</figcaption>
+               alt="The home screen: 87 percent charging, monitoring switched on, and the current charging session.">
+          <figcaption>Live state and the session in progress</figcaption>
+        </figure>
+      </div>
+      <div class="shot">
+        <figure>
+          <img src="img/sound.png" width="1080" height="2400" loading="lazy"
+               alt="The alarm sound picker, listing the device ringtones with import and record buttons above them.">
+          <figcaption>Pick, import or record an alarm sound</figcaption>
+        </figure>
+      </div>
+      <div class="shot">
+        <figure>
+          <img src="img/delete.png" width="1080" height="2400" loading="lazy"
+               alt="The delete confirmation dialog, explaining that a device ringtone is hidden from the list rather than deleted from the phone.">
+          <figcaption>Removing a ringtone hides it — and says so</figcaption>
         </figure>
       </div>
       <div class="shot">
         <figure>
           <img src="img/settings.png" width="1080" height="2400" loading="lazy"
-               alt="The settings screen showing the announcement, alarm sound, repeat interval and volume options.">
-          <figcaption>Announcement, sound, interval and volume</figcaption>
+               alt="The settings screen showing the announcement, alarm sound, restore default sounds, repeat interval and volume.">
+          <figcaption>Everything is adjustable</figcaption>
         </figure>
       </div>
     </div>
@@ -184,8 +277,9 @@
 </main>
 
 <footer class="shell site-footer">
-  <p style="margin:0">Battery Full Alarm — MIT licensed. Built with Flutter and Kotlin.</p>
+  <p style="margin:0">Battery Full Alarm v1.1.0 — MIT licensed. Built with Flutter and Kotlin.</p>
   <nav>
+    <a href="/changelog">Changelog</a>
     <a href="/privacy">Privacy policy</a>
     <a href="https://github.com/FarhanAsgharr/battery-full-alarm">GitHub</a>
     <a href="https://github.com/FarhanAsgharr/battery-full-alarm/releases">Releases</a>

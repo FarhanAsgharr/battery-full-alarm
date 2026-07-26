@@ -375,6 +375,132 @@ a {
   color: var(--amber);
 }
 
+/* ---------------------------------------------------------------- caveat */
+
+/* Reserved for things the reader would be annoyed to discover later. */
+.caveat {
+  margin-top: 1.75rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--amber);
+  border-radius: 0 12px 12px 0;
+  background: rgba(255, 178, 92, 0.08);
+  color: #e3d2bd;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  max-width: 56ch;
+}
+
+.caveat strong {
+  color: var(--amber);
+}
+
+/* -------------------------------------------------------------- features */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.feature {
+  background: var(--night-2);
+  padding: 1.5rem clamp(1.1rem, 3vw, 1.6rem);
+}
+
+.feature h3 {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.85rem;
+  color: var(--charge);
+}
+
+.feature ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feature li {
+  position: relative;
+  padding-left: 1.1rem;
+  margin-bottom: 0.55rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #bcccc6;
+}
+
+.feature li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+/* ------------------------------------------------------------- changelog */
+
+.release {
+  padding-block: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.release:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.release-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.release-head h2 {
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.release-date {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.pill {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.pill-current {
+  border-color: var(--charge);
+  color: var(--charge);
+}
+
+.release h3 {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  color: var(--glow);
+  margin: 1.75rem 0 0.5rem;
+}
+
 /* ------------------------------------------------------------- screenshots */
 
 .shots {

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changelog — Battery Full Alarm</title>
+<meta name="description" content="What changed in each release of Battery Full Alarm.">
+<meta name="theme-color" content="#0a1113">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='19'>🔋</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="shell masthead">
+  <a class="wordmark" href="/">
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+      <rect x="6" y="3" width="12" height="18" rx="3" stroke="#2FD08A" stroke-width="1.8"/>
+      <path d="M13 7l-3.4 5.6H12L11.4 17l3.6-5.8h-2.4z" fill="#2FD08A"/>
+    </svg>
+    Battery Full Alarm
+  </a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/privacy">Privacy</a>
+    <a href="https://github.com/FarhanAsgharr/battery-full-alarm">Source</a>
+  </nav>
+</header>
+
+<main class="shell band" style="border-top:none">
+  <div class="prose">
+    <p class="eyebrow">Changelog</p>
+    <h1 style="font-family:var(--display);font-size:clamp(2rem,1.4rem+2.4vw,3rem);letter-spacing:-0.03em;line-height:1.1;margin:0 0 1.5rem">
+      What changed, and when.
+    </h1>
+
+    <!-- ------------------------------------------------------------ 1.1.0 -->
+    <div class="release">
+      <div class="release-head">
+        <h2 id="v1-1-0">1.1.0</h2>
+        <span class="release-date">26 July 2026</span>
+        <span class="pill pill-current">Current</span>
+      </div>
+      <p>First build published as a downloadable APK.</p>
+
+      <aside class="caveat">
+        <strong>Signing note.</strong> The 1.1.0 APKs are signed with a debug key,
+        because no upload keystore exists yet. They install and run normally, but
+        Android will refuse to update them from a properly-signed release later — that
+        requires uninstalling first, which loses your settings and history.
+      </aside>
+
+      <h3>Added</h3>
+      <ul>
+        <li><strong>Remove any alarm sound.</strong> Every entry in the picker now has a
+          Delete action. Sounds you imported or recorded are deleted from storage. The
+          entries under <em>On this device</em> are your phone's own ringtones — deleting
+          one would take it away from your clock app and every other alarm app, so those
+          are hidden from the list instead, and the dialog says so.</li>
+        <li>Hiding survives an app restart and a device reboot.</li>
+        <li><strong>Restore default sounds</strong> in Settings → Alarm, with a
+          confirmation. It reports how many are hidden, and is disabled when there is
+          nothing to restore.</li>
+        <li>Removing the sound currently set as your alarm resets the selection to your
+          device default, so the alarm can never point at something that is gone.</li>
+        <li>Average charge gained now appears on the Statistics screen.</li>
+        <li>A proper adaptive app icon, replacing the Flutter placeholder.</li>
+      </ul>
+
+      <h3>Fixed — reliability</h3>
+      <ul>
+        <li>The alarm no longer loses timing accuracy after an hour: the wake lock is
+          re-armed on every repeat, so Doze cannot stretch a 10-second interval into
+          minutes.</li>
+        <li>Vibration and the torch are perceptible when both the sound and the spoken
+          message are switched off. The burst used to begin and end in the same frame.</li>
+        <li>If your chosen alarm sound disappears, the alarm falls back to the device
+          default rather than playing nothing.</li>
+        <li>A charging session left open by a killed process is closed at the last moment
+          the battery was known to be charging, instead of reading "In progress" for ever.</li>
+        <li>A stale alarm notification left by a killed process is cleared on restart.</li>
+        <li>Monitoring is restored after an app update, not only after a reboot.</li>
+        <li>A <code>JobScheduler</code> watchdog restarts the monitor if an aggressive
+          task-killer stops it — aimed at Xiaomi, Oppo, Realme, Vivo and Huawei.</li>
+        <li>Text-to-speech initialises on a worker thread; it was binding to the platform
+          TTS service on the same thread Flutter draws on.</li>
+        <li>Long alarm tones and long messages are no longer cut short.</li>
+      </ul>
+
+      <h3>Fixed — privacy</h3>
+      <ul>
+        <li><strong>Android cloud backup is now disabled.</strong> At its default it
+          would have copied your settings, charging history and any recorded voice clip
+          to your Google Drive, which contradicted the app's central claim.</li>
+        <li>If the app is killed while an alarm is ringing, your system alarm volume is
+          restored on the next launch instead of staying where the app left it.</li>
+      </ul>
+
+      <h3>Fixed — interface</h3>
+      <ul>
+        <li>Leaving the alarm sound screen while the file picker or a permission dialog
+          was open no longer crashes the app.</li>
+        <li>The volume and speech sliders save once, when you let go — not on every frame
+          of a drag.</li>
+        <li>The announcement editor saves after a pause in typing, not per keystroke.</li>
+        <li>The battery gauge and statistics tiles no longer overflow at large system
+          font sizes.</li>
+        <li>The ongoing notification is only re-posted when its visible text changes.</li>
+      </ul>
+    </div>
+
+    <!-- ------------------------------------------------------------ 1.0.0 -->
+    <div class="release">
+      <div class="release-head">
+        <h2 id="v1-0-0">1.0.0</h2>
+        <span class="release-date">Internal</span>
+        <span class="pill">Never published</span>
+      </div>
+      <p>
+        The initial build. No APK was ever released for this version, so there is nothing
+        to upgrade from.
+      </p>
+      <ul>
+        <li>Foreground service watching the system battery broadcast, alarming at 100%
+          while plugged in and stopping the instant the charger is removed.</li>
+        <li>Repeating alarm chain: tone, spoken announcement, vibration and torch, then a
+          wait of your chosen interval.</li>
+        <li>Custom announcement with name and battery-level tags, adjustable speech speed
+          and pitch.</li>
+        <li>Alarm sound from the device ringtones, an imported file, or a clip recorded in
+          the app.</li>
+        <li>Charging history and daily, weekly and monthly statistics, stored only on the
+          device.</li>
+        <li>English, Urdu, Arabic and Hindi, with right-to-left layout.</li>
+        <li>Material 3 with light, dark and system themes.</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="shell site-footer">
+  <p style="margin:0">Battery Full Alarm v1.1.0 — MIT licensed.</p>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/privacy">Privacy policy</a>
+    <a href="https://github.com/FarhanAsgharr/battery-full-alarm">GitHub</a>
+  </nav>
+</footer>
+
+</body>
+</html>
