@@ -1,0 +1,572 @@
+/*
+  Battery Full Alarm — site styles.
+
+  Palette is taken from the app's own moment: a phone screen lighting a dark room at
+  3am. Near-black with a green cast, one screen-light off-white, the charged green as
+  the single accent, and a warm amber reserved exclusively for the alarm state.
+*/
+
+:root {
+  --night: #0a1113;
+  --night-2: #0d1618;
+  --panel: #111a1c;
+  --line: #1e2b2d;
+  --glow: #eaf2ee;
+  --muted: #7c918b;
+  --charge: #2fd08a;
+  --amber: #ffb25c;
+
+  --display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --measure: 62ch;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--glow);
+  font-family: var(--body);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The single light source: a soft pool of screen-glow behind the hero. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20vh 0 auto 0;
+  height: 90vh;
+  background: radial-gradient(
+    62% 52% at 50% 12%,
+    rgba(47, 208, 138, 0.16) 0%,
+    rgba(47, 208, 138, 0.05) 38%,
+    transparent 72%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+  width: min(72rem, 100%);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+a {
+  color: var(--charge);
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--charge);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------- masthead */
+
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.75rem;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--glow);
+  text-decoration: none;
+}
+
+.wordmark svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.masthead nav {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.masthead nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.masthead nav a:hover {
+  color: var(--glow);
+}
+
+/* -------------------------------------------------------------------- hero */
+
+.hero {
+  padding-block: clamp(2.5rem, 7vw, 5.5rem) clamp(3rem, 8vw, 6rem);
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--charge);
+  margin: 0 0 1.25rem;
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 1.4rem + 5.4vw, 5.4rem);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  margin: 0 0 1.25rem;
+  max-width: 15ch;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--charge);
+}
+
+.hero .lede {
+  max-width: 46ch;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1rem + 0.35vw, 1.25rem);
+  margin: 0 0 2.5rem;
+}
+
+/* ------------------------------------------------- signature: the announcer */
+
+.announcer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(180deg, var(--panel), var(--night-2));
+}
+
+.meter {
+  width: clamp(116px, 20vw, 156px);
+  height: clamp(116px, 20vw, 156px);
+  flex: none;
+  display: block;
+}
+
+.meter-track {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 9;
+  stroke-linecap: round;
+}
+
+.meter-fill {
+  fill: none;
+  stroke: var(--charge);
+  stroke-width: 9;
+  stroke-linecap: round;
+  /* Set from script; the dash offset is what animates. */
+  transition: stroke-dashoffset 1.05s cubic-bezier(0.22, 0.75, 0.2, 1);
+}
+
+.meter-label {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 25px;
+  fill: var(--glow);
+  letter-spacing: -0.03em;
+}
+
+.meter.is-full .meter-fill {
+  filter: drop-shadow(0 0 10px rgba(47, 208, 138, 0.55));
+}
+
+.speech {
+  min-height: 8.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.speech-lang {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.speech-line {
+  font-size: clamp(1.15rem, 1rem + 0.9vw, 1.7rem);
+  line-height: 1.45;
+  margin: 0;
+  color: var(--glow);
+  text-wrap: balance;
+}
+
+/* Quiet until the meter reaches 100 — the sentence is the payoff, not decoration. */
+.speech.is-idle .speech-line,
+.speech.is-idle .speech-lang {
+  opacity: 0.25;
+}
+
+.speech-line,
+.speech-lang {
+  transition: opacity 0.4s ease;
+}
+
+.speech[dir="rtl"] {
+  text-align: right;
+}
+
+.speech[lang="ur"] .speech-line,
+.speech[lang="ar"] .speech-line {
+  font-family: "IBM Plex Sans Arabic", var(--body);
+  line-height: 1.9;
+}
+
+.speech[lang="hi"] .speech-line {
+  font-family: "IBM Plex Sans Devanagari", var(--body);
+}
+
+/* ------------------------------------------------------------------ actions */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2.25rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 12px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--charge);
+  color: #04120c;
+}
+
+.btn-primary:hover {
+  background: #4ade9f;
+}
+
+.btn-ghost {
+  border-color: var(--line);
+  color: var(--glow);
+}
+
+.btn-ghost:hover {
+  border-color: var(--charge);
+}
+
+.actions-note {
+  margin: 0.9rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------- sections */
+
+.band {
+  padding-block: clamp(3rem, 8vw, 5.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.band > h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  letter-spacing: -0.025em;
+  margin: 0 0 0.75rem;
+}
+
+.band > .sub {
+  color: var(--muted);
+  max-width: var(--measure);
+  margin: 0 0 2.5rem;
+}
+
+/* The alarm chain is genuinely ordered, so the steps are numbered. */
+.chain {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.chain li {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.35rem clamp(1rem, 3vw, 1.75rem);
+  background: var(--night-2);
+}
+
+.chain .step {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--charge);
+  letter-spacing: 0.06em;
+}
+
+.chain h3 {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.2rem;
+}
+
+.chain p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.chain li:last-child .step {
+  color: var(--amber);
+}
+
+/* ------------------------------------------------------------- screenshots */
+
+.shots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+  max-width: 46rem;
+}
+
+.shot figure {
+  margin: 0;
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.shot figcaption {
+  margin-top: 0.85rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ------------------------------------------------------ the honest section */
+
+.absences {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.25rem 2rem;
+  max-width: 58rem;
+}
+
+.absences li {
+  padding-left: 1.9rem;
+  position: relative;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--glow);
+}
+
+.absences li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 1.1rem;
+  height: 1px;
+  background: var(--charge);
+}
+
+.absences span {
+  display: block;
+  font-family: var(--body);
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+/* ------------------------------------------------------------------ prose */
+
+.prose {
+  max-width: var(--measure);
+}
+
+.prose h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.8rem);
+  letter-spacing: -0.02em;
+  margin: 2.75rem 0 0.85rem;
+}
+
+.prose h3 {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  margin: 2rem 0 0.5rem;
+}
+
+.prose p,
+.prose li {
+  color: #c3d3cd;
+}
+
+.prose ul {
+  padding-left: 1.15rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.92rem;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.prose th {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.prose td:first-child {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--glow);
+  white-space: nowrap;
+}
+
+.stamp {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+/* ----------------------------------------------------------------- footer */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding-block: 2.5rem 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--charge);
+}
+
+.site-footer nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------ small screens */
+
+@media (max-width: 40rem) {
+  .announcer {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .speech {
+    min-height: 0;
+  }
+
+  .chain li {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

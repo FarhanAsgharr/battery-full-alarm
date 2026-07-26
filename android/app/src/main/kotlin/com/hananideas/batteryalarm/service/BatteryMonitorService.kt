@@ -9,6 +9,7 @@ import android.content.IntentFilter
 import android.content.pm.ServiceInfo
 import android.os.Build
 import android.os.IBinder
+import android.os.SystemClock
 import android.util.Log
 import com.hananideas.batteryalarm.alarm.AlarmPlayer
 import com.hananideas.batteryalarm.alarm.VolumeGuard
@@ -63,13 +64,16 @@ class BatteryMonitorService : Service() {
         }
     }
 
+    /**
+     * Everything here runs on the main looper, which in this process is also Flutter's
+     * UI thread — so it is kept to the minimum needed before `startForeground`.
+     * Recovery work that nothing else waits on is deferred to [runRecoveryTasks].
+     */
     override fun onCreate() {
         super.onCreate()
+        val startedAt = SystemClock.uptimeMillis()
         isRunning = true
         settings = AppSettings.load(this)
-        // If a previous run was killed mid-alarm it never got to put the user's system
-        // alarm volume back. Do it now, before this instance touches the volume itself.
-        VolumeGuard.restoreIfPending(this)
         alarmPlayer = AlarmPlayer(this)
         ServiceNotifications.createChannels(this)
         // A fresh instance never has an alarm ringing. If the process was killed
@@ -77,17 +81,31 @@ class BatteryMonitorService : Service() {
         // instance's alarm notification is still posted — clear it so the user is not
         // left with a Stop button for an alarm that no longer exists.
         ServiceNotifications.cancelAlarmNotification(this)
-        // Likewise, a charge that was in progress when the process died has no owner
-        // any more; close it before this instance starts a session of its own.
-        HistoryStore.closeDanglingSessions(this)
+        runRecoveryTasks()
         registerBatteryReceiver()
         snapshot = readBatteryNow()
-        Log.i(TAG, "Battery monitor service created")
+        Log.i(TAG, "Service created in ${SystemClock.uptimeMillis() - startedAt}ms")
+    }
+
+    /**
+     * Repairs left over from a process that was killed without `onDestroy`.
+     *
+     * Runs before the battery receiver is registered so it can never race with this
+     * instance's own session, but after the notification work that `startForeground`
+     * depends on.
+     */
+    private fun runRecoveryTasks() {
+        // Put back a system alarm volume a killed run never restored.
+        VolumeGuard.restoreIfPending(this)
+        // Close a charge that was still in progress when that run died.
+        HistoryStore.closeDanglingSessions(this)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        val startedAt = SystemClock.uptimeMillis()
         settings = AppSettings.load(this)
         promoteToForeground()
+        Log.i(TAG, "Foreground in ${SystemClock.uptimeMillis() - startedAt}ms")
 
         when (intent?.action) {
             ServiceActions.STOP -> {

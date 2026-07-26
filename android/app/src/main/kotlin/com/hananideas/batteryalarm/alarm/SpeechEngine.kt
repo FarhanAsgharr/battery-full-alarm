@@ -31,10 +31,20 @@ class SpeechEngine(context: Context) {
     @Volatile var lastLanguageSupported = true
         private set
 
-    private var engine: TextToSpeech? = null
+    @Volatile private var engine: TextToSpeech? = null
 
     init {
-        engine = TextToSpeech(context.applicationContext) { status ->
+        // Constructing TextToSpeech binds to the platform TTS service. That is a binder
+        // round-trip that can take hundreds of milliseconds — and it used to happen
+        // inline in the monitor service's onCreate, i.e. on the main looper, which is
+        // also Flutter's UI thread. Tapping the monitoring switch could therefore block
+        // input dispatch long enough to ANR. It now happens on a worker thread; a speak
+        // request that arrives first is queued in `pending` and runs once init lands.
+        Thread({ createEngine(context.applicationContext) }, "tts-init").start()
+    }
+
+    private fun createEngine(appContext: Context) {
+        engine = TextToSpeech(appContext) { status ->
             ready = status == TextToSpeech.SUCCESS
             if (ready) {
                 engine?.setAudioAttributes(

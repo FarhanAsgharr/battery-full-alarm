@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Battery Full Alarm — it tells you when your phone is charged</title>
+<meta name="description" content="An offline Android app that sounds an alarm and speaks a custom message the moment your phone reaches 100% while charging. No internet permission, no account, no cloud.">
+<meta name="theme-color" content="#0a1113">
+
+<meta property="og:title" content="Battery Full Alarm">
+<meta property="og:description" content="Your phone tells you, out loud, the moment it finishes charging. Completely offline.">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='19'>🔋</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;600&family=IBM+Plex+Sans+Devanagari:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="shell masthead">
+  <a class="wordmark" href="/">
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+      <rect x="6" y="3" width="12" height="18" rx="3" stroke="#2FD08A" stroke-width="1.8"/>
+      <path d="M13 7l-3.4 5.6H12L11.4 17l3.6-5.8h-2.4z" fill="#2FD08A"/>
+    </svg>
+    Battery Full Alarm
+  </a>
+  <nav>
+    <a href="#how">How it works</a>
+    <a href="/privacy">Privacy</a>
+    <a href="https://github.com/FarhanAsgharr/battery-full-alarm">Source</a>
+  </nav>
+</header>
+
+<main>
+  <!--
+    The hero is the product's single job, performed: the meter charges to 100%, and
+    only then does the phone speak — cycling through the four languages it supports,
+    flipping direction for Urdu and Arabic.
+  -->
+  <section class="shell hero">
+    <p class="eyebrow">Android · works offline</p>
+    <h1>Your phone tells you when it's <em>done charging</em>.</h1>
+    <p class="lede">
+      Leave it charging and forget about it. At 100% it sounds an alarm and says so out
+      loud, in your language, using your name — and keeps saying it until you unplug.
+    </p>
+
+    <div class="announcer">
+      <svg class="meter" id="meter" viewBox="0 0 120 120" role="img"
+           aria-label="Battery charging to 100 percent">
+        <circle class="meter-track" cx="60" cy="60" r="50"></circle>
+        <circle class="meter-fill" id="meterFill" cx="60" cy="60" r="50"
+                transform="rotate(-90 60 60)"></circle>
+        <text class="meter-label" id="meterLabel" x="60" y="69" text-anchor="middle">0%</text>
+      </svg>
+
+      <div class="speech is-idle" id="speech" lang="en" dir="ltr" aria-live="polite">
+        <p class="speech-lang" id="speechLang">Waiting for a full charge</p>
+        <p class="speech-line" id="speechLine">
+          Muhammad, your phone battery is fully charged. Please remove the charger.
+        </p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary"
+         href="https://github.com/FarhanAsgharr/battery-full-alarm/releases">
+        Download the APK
+      </a>
+      <a class="btn btn-ghost"
+         href="https://github.com/FarhanAsgharr/battery-full-alarm">
+        Read the source
+      </a>
+    </div>
+    <p class="actions-note">Android 8.0+ · MIT licence · no account required</p>
+  </section>
+
+  <!-- A real sequence, so the numbering carries information. -->
+  <section class="shell band" id="how">
+    <h2>What happens at 100%</h2>
+    <p class="sub">
+      The chain repeats at the interval you choose — 5, 10, 15, 30 or 60 seconds —
+      and stops the instant the charger comes out.
+    </p>
+
+    <ol class="chain">
+      <li>
+        <span class="step">01</span>
+        <div>
+          <h3>An alarm sounds</h3>
+          <p>Any alarm tone on your phone, an audio file you import, or a clip you record
+             yourself. It plays on the alarm stream, so it is audible on silent.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step">02</span>
+        <div>
+          <h3>The phone speaks</h3>
+          <p>Your own sentence, read by the text-to-speech engine already on the device.
+             Set your name, the wording, the speed and the pitch.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step">03</span>
+        <div>
+          <h3>It vibrates and flashes</h3>
+          <p>Vibration and the camera flash fire alongside the sound. Each can be turned
+             off on its own.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step">04</span>
+        <div>
+          <h3>It waits, then does it again</h3>
+          <p>Silence for your chosen interval, then the whole chain repeats. A phone left
+             charging does not get quietly ignored.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step">05</span>
+        <div>
+          <h3>You unplug — everything stops</h3>
+          <p>Sound, speech, vibration and torch cut immediately, the session is written to
+             your local history, and monitoring re-arms for next time.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="shell band">
+    <h2>On the phone</h2>
+    <p class="sub">Material 3, light and dark, in English, Urdu, Arabic and Hindi —
+       right-to-left included.</p>
+    <div class="shots">
+      <div class="shot">
+        <figure>
+          <img src="img/home.png" width="1080" height="2400" loading="lazy"
+               alt="The home screen showing 87 percent charging, with monitoring switched on and the current charging session.">
+          <figcaption>Live battery state and the current session</figcaption>
+        </figure>
+      </div>
+      <div class="shot">
+        <figure>
+          <img src="img/settings.png" width="1080" height="2400" loading="lazy"
+               alt="The settings screen showing the announcement, alarm sound, repeat interval and volume options.">
+          <figcaption>Announcement, sound, interval and volume</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- The honest inverse. This app is defined as much by what it refuses to do. -->
+  <section class="shell band">
+    <h2>What it doesn't do</h2>
+    <p class="sub">
+      This is the shorter and more interesting list. The app has no <code>INTERNET</code>
+      permission, so most of these are enforced by Android rather than promised by us.
+    </p>
+    <ul class="absences">
+      <li>No network access
+        <span>The permission is not declared. It cannot reach the internet at all.</span>
+      </li>
+      <li>No account or sign-in
+        <span>Nothing to register, nothing to log into.</span>
+      </li>
+      <li>No analytics or ads
+        <span>No tracking SDKs of any kind are linked into the app.</span>
+      </li>
+      <li>No cloud backup
+        <span>Auto-backup is switched off, so your settings, history and recordings are
+              never copied to Google Drive.</span>
+      </li>
+      <li>No location, contacts or files
+        <span>Seven permissions in total, two of them optional.</span>
+      </li>
+      <li>No subscription
+        <span>Free and open source under the MIT licence.</span>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer class="shell site-footer">
+  <p style="margin:0">Battery Full Alarm — MIT licensed. Built with Flutter and Kotlin.</p>
+  <nav>
+    <a href="/privacy">Privacy policy</a>
+    <a href="https://github.com/FarhanAsgharr/battery-full-alarm">GitHub</a>
+    <a href="https://github.com/FarhanAsgharr/battery-full-alarm/releases">Releases</a>
+  </nav>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

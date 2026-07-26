@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy — Battery Full Alarm</title>
+<meta name="description" content="Battery Full Alarm collects nothing, sends nothing and stores everything on your device. It has no internet permission.">
+<meta name="theme-color" content="#0a1113">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='19'>🔋</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="shell masthead">
+  <a class="wordmark" href="/">
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+      <rect x="6" y="3" width="12" height="18" rx="3" stroke="#2FD08A" stroke-width="1.8"/>
+      <path d="M13 7l-3.4 5.6H12L11.4 17l3.6-5.8h-2.4z" fill="#2FD08A"/>
+    </svg>
+    Battery Full Alarm
+  </a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="https://github.com/FarhanAsgharr/battery-full-alarm">Source</a>
+  </nav>
+</header>
+
+<main class="shell band" style="border-top:none">
+  <div class="prose">
+    <p class="eyebrow">Privacy policy</p>
+    <h1 style="font-family:var(--display);font-size:clamp(2rem,1.4rem+2.4vw,3rem);letter-spacing:-0.03em;line-height:1.1;margin:0 0 1rem">
+      Nothing you enter leaves your phone.
+    </h1>
+    <p class="stamp">Last updated 26 July 2026 · applies to Battery Full Alarm for Android</p>
+
+    <h2>The short version</h2>
+    <p>
+      Battery Full Alarm collects nothing, sends nothing, and stores everything on your
+      device. There is no account, no analytics, no advertising and no server.
+    </p>
+    <p>
+      The app does not request the <code>INTERNET</code> permission. Android therefore
+      blocks it from opening any network connection at all. That is enforced by the
+      operating system, not by a promise in this document — you can verify it yourself in
+      the manifest of the published build.
+    </p>
+    <p>
+      Android's automatic cloud backup is also switched off. Left at its default it would
+      have copied your settings, your charging history and any voice clip you recorded to
+      your Google Drive. It does not. The trade-off is that these do not carry over to a
+      new phone.
+    </p>
+
+    <h2>What is stored on your device</h2>
+    <p>All of this lives in the app's private storage, readable only by this app:</p>
+    <ul>
+      <li>Your name and the announcement text you configure</li>
+      <li>Alarm settings: sound, repeat interval, volume, vibration, torch, speech speed and pitch</li>
+      <li>Your language and theme preference</li>
+      <li>Audio files you import, and voice clips you record for use as the alarm</li>
+      <li>A log of charging sessions: start and end time, battery level at each end, how long
+          the charger was connected, when 100% was reached, and how many alarms played</li>
+    </ul>
+
+    <h2>What the app never does</h2>
+    <ul>
+      <li>Transmit any of the above, to us or to anyone else</li>
+      <li>Use analytics, crash reporting or advertising SDKs</li>
+      <li>Read your contacts, messages, photos, files, location or call history</li>
+      <li>Identify you or your device</li>
+      <li>Run in the background for any purpose other than watching the battery while you
+          have monitoring switched on</li>
+    </ul>
+
+    <h2>Permissions, and why each one exists</h2>
+    <table>
+      <thead>
+        <tr><th>Permission</th><th>Why it is needed</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FOREGROUND_SERVICE<br>FOREGROUND_SERVICE_SPECIAL_USE</td>
+          <td>Observe battery level and charging state continuously. Android requires a
+              foreground service for this, because the battery broadcast is only delivered
+              to a running process.</td>
+        </tr>
+        <tr>
+          <td>POST_NOTIFICATIONS</td>
+          <td>Show the ongoing notification Android requires for that service, and the
+              alarm notification with its Stop button.</td>
+        </tr>
+        <tr>
+          <td>VIBRATE</td>
+          <td>Vibrate during the alarm, if you enable it.</td>
+        </tr>
+        <tr>
+          <td>WAKE_LOCK</td>
+          <td>Keep the alarm playing while the screen is off. Held only while an alarm is
+              actually ringing.</td>
+        </tr>
+        <tr>
+          <td>RECEIVE_BOOT_COMPLETED</td>
+          <td>Optional. Resume monitoring after a restart, only if you turn that setting on.</td>
+        </tr>
+        <tr>
+          <td>RECORD_AUDIO</td>
+          <td>Optional. Requested only at the moment you choose to record a custom alarm
+              clip.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      The flashlight is controlled through <code>CameraManager.setTorchMode</code>, which
+      requires no camera permission. The app never opens a camera stream and has no access
+      to images.
+    </p>
+
+    <h2>Microphone</h2>
+    <p>
+      The microphone is used only while you are actively recording an alarm clip, and only
+      after you grant permission at that moment. Recording stops when you tap stop, or
+      after 30 seconds. Nothing is listened to, transcribed or transmitted.
+    </p>
+
+    <h2>Text-to-speech</h2>
+    <p>
+      The spoken announcement uses the text-to-speech engine already installed on your
+      phone. The app passes it the sentence you wrote. If your device's engine is
+      configured to use online voices, that is a setting of that engine, not of this app —
+      this app itself has no network access.
+    </p>
+
+    <h2>Children</h2>
+    <p>The app collects no personal data from anyone, of any age.</p>
+
+    <h2>Deleting your data</h2>
+    <ul>
+      <li><strong>Charging history</strong> — Settings → Data → Clear history, or swipe
+          individual entries away on the History screen.</li>
+      <li><strong>Custom sounds</strong> — delete them from the Alarm sound screen.</li>
+      <li><strong>Everything</strong> — uninstall the app. Android removes its private
+          storage entirely. Because nothing was ever uploaded, and cloud backup is
+          disabled, there is nothing elsewhere to delete.</li>
+    </ul>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      Any change will be published here with a new date at the top, and included in the
+      app release that makes the change.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about this policy can be raised on the
+      <a href="https://github.com/FarhanAsgharr/battery-full-alarm/issues">project issue tracker</a>.
+    </p>
+  </div>
+</main>
+
+<footer class="shell site-footer">
+  <p style="margin:0">Battery Full Alarm — MIT licensed.</p>
+  <nav>
+    <a href="/">Home</a>
+    <a href="https://github.com/FarhanAsgharr/battery-full-alarm">GitHub</a>
+  </nav>
+</footer>
+
+</body>
+</html>
