@@ -46,7 +46,6 @@ void main() {
       'type': 'imported',
       'uri': 'file:///data/user/0/app/files/alarm_sounds/imported_song.mp3',
       'label': 'song',
-      'deletable': true,
     };
     final container =
         await pumpAppWidget(tester, const AlarmSoundScreen(), bridge: bridge);
@@ -72,47 +71,11 @@ void main() {
     expect(container.read(settingsProvider).soundUri, isEmpty);
   });
 
-  testWidgets('a custom sound can be deleted', (tester) async {
-    bridge = FakeNativeBridge(
-      sounds: {
-        'builtIn': <Map<String, dynamic>>[
-          {
-            'type': 'builtin',
-            'uri': 'content://settings/system/alarm_alert',
-            'label': 'Default alarm',
-            'deletable': false,
-          },
-        ],
-        'custom': <Map<String, dynamic>>[
-          {
-            'type': 'recorded',
-            'uri': 'file:///files/alarm_sounds/recorded_clip.m4a',
-            'label': 'clip',
-            'deletable': true,
-          },
-        ],
-      },
-    );
-    await pumpAppWidget(tester, const AlarmSoundScreen(), bridge: bridge);
-    final l10n = await english;
-
-    expect(find.text('clip'), findsOneWidget);
-
-    await tester.tap(find.byIcon(Icons.delete_outline_rounded));
-    await tester.pumpAndSettle();
-    await tester.tap(find.widgetWithText(FilledButton, l10n.actionDelete));
-    await tester.pumpAndSettle();
-
-    expect(bridge.calls, contains('deleteSound'));
-    expect(find.text('clip'), findsNothing);
-  });
-
   testWidgets('recording shows progress and selects the saved clip', (tester) async {
     bridge.nextRecordingResult = {
       'type': 'recorded',
       'uri': 'file:///files/alarm_sounds/recorded_20250115.m4a',
       'label': '20250115',
-      'deletable': true,
     };
     final container =
         await pumpAppWidget(tester, const AlarmSoundScreen(), bridge: bridge);

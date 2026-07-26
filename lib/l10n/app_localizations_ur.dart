@@ -418,17 +418,6 @@ class AppLocalizationsUr extends AppLocalizations {
   String get importCancelled => 'کوئی فائل منتخب نہیں کی گئی۔';
 
   @override
-  String soundDeleteConfirm(String name) {
-    return '\"$name\" حذف کریں؟';
-  }
-
-  @override
-  String get soundDeleted => 'آواز حذف ہو گئی۔';
-
-  @override
-  String get soundInUseReset => 'الارم واپس ڈیفالٹ آواز پر منتقل کر دیا گیا۔';
-
-  @override
   String get historyTitle => 'چارجنگ کی تاریخ';
 
   @override
@@ -567,5 +556,66 @@ class AppLocalizationsUr extends AppLocalizations {
   @override
   String percentValue(int value) {
     return '$value%';
+  }
+
+  @override
+  String get soundDeleteTitle => 'الارم کی آواز حذف کریں؟';
+
+  @override
+  String get soundDeleteMessage =>
+      'کیا آپ واقعی یہ الارم آواز ہٹانا چاہتے ہیں؟';
+
+  @override
+  String get soundDeleteDeviceNote =>
+      'یہ آپ کی ڈیوائس کی رنگ ٹون ہے۔ اسے صرف اس فہرست سے چھپایا جائے گا، فون سے حذف نہیں کیا جائے گا، اور آپ اسے ترتیبات سے بحال کر سکتے ہیں۔';
+
+  @override
+  String get soundDeletedFile => 'آواز حذف ہو گئی۔';
+
+  @override
+  String get soundHiddenFromList => 'آواز چھپا دی گئی۔ ترتیبات سے بحال کریں۔';
+
+  @override
+  String get soundActiveFallback =>
+      'یہ آپ کی الارم آواز تھی، اس لیے الارم واپس ڈیوائس کی ڈیفالٹ آواز پر منتقل ہو گیا۔';
+
+  @override
+  String get soundNoneTitle => 'فہرست میں کوئی آواز نہیں';
+
+  @override
+  String get soundNoneBody =>
+      'الارم آپ کی ڈیوائس کی ڈیفالٹ آواز استعمال کرے گا۔ کوئی اور آواز منتخب کرنے کے لیے فہرست بحال کریں۔';
+
+  @override
+  String get settingRestoreSounds => 'ڈیفالٹ آوازیں بحال کریں';
+
+  @override
+  String get settingRestoreSoundsNone => 'کچھ چھپا ہوا نہیں';
+
+  @override
+  String settingRestoreSoundsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count آوازیں چھپی ہوئی',
+      one: '1 آواز چھپی ہوئی',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get restoreSoundsConfirm =>
+      'کیا آپ کی چھپائی ہوئی تمام الارم آوازیں واپس لائی جائیں؟';
+
+  @override
+  String soundsRestored(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count آوازیں بحال ہو گئیں',
+      one: '1 آواز بحال ہو گئی',
+      zero: 'بحال کرنے کو کچھ نہیں',
+    );
+    return '$_temp0';
   }
 }

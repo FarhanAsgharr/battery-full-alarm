@@ -23,6 +23,12 @@ object SoundLibrary {
     private const val DIR = "alarm_sounds"
     private const val IMPORT_PREFIX = "imported_"
     private const val RECORD_PREFIX = "recorded_"
+    private const val KEY_HIDDEN = "hidden_sound_uris"
+
+    /** Outcomes of [remove], reported back to the UI so it can word the result. */
+    const val REMOVED_DELETED = "deleted"
+    const val REMOVED_HIDDEN = "hidden"
+    const val REMOVED_MISSING = "missing"
 
     fun storageDir(context: Context): File =
         File(context.filesDir, DIR).apply { if (!exists()) mkdirs() }
@@ -37,6 +43,61 @@ object SoundLibrary {
         RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
             ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
             ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+
+    // --------------------------------------------------------------- visibility
+
+    fun hiddenUris(context: Context): Set<String> =
+        SoundVisibility.decode(AppSettings.prefs(context).getString(KEY_HIDDEN, null))
+
+    private fun writeHidden(context: Context, hidden: Set<String>) {
+        AppSettings.prefs(context).edit()
+            .putString(KEY_HIDDEN, SoundVisibility.encode(hidden))
+            .apply()
+    }
+
+    fun hiddenCount(context: Context): Int = hiddenUris(context).size
+
+    /**
+     * Removes a sound from the picker.
+     *
+     * A file this app owns is deleted outright. Anything else — a device ringtone
+     * reached through `RingtoneManager` — is hidden instead, because deleting it would
+     * remove the ringtone from every other app on the phone.
+     */
+    @Synchronized
+    fun remove(context: Context, uriString: String): String {
+        if (uriString.isBlank()) return REMOVED_MISSING
+
+        if (isOwnedFile(context, uriString) && deleteCustom(context, uriString)) {
+            return REMOVED_DELETED
+        }
+
+        // Everything else is hidden rather than deleted: a device ringtone, or a file of
+        // ours that could not be removed (already gone, or storage refused). Hiding it
+        // either way means the list never shows an entry that cannot be played.
+        writeHidden(context, SoundVisibility.hide(hiddenUris(context), uriString))
+        return REMOVED_HIDDEN
+    }
+
+    /** Brings every hidden device sound back. @return how many were restored. */
+    @Synchronized
+    fun restoreAllHidden(context: Context): Int {
+        val count = hiddenUris(context).size
+        if (count > 0) writeHidden(context, emptySet())
+        return count
+    }
+
+    /** True when the URI points at a file inside this app's own sound folder. */
+    private fun isOwnedFile(context: Context, uriString: String): Boolean {
+        val uri = runCatching { Uri.parse(uriString) }.getOrNull() ?: return false
+        if (uri.scheme != null && uri.scheme != "file") return false
+        val path = uri.path ?: return false
+        val parent = runCatching { File(path).parentFile?.canonicalPath }.getOrNull()
+        val dir = runCatching { storageDir(context).canonicalPath }.getOrNull()
+        return parent != null && parent == dir
+    }
+
+    // ---------------------------------------------------------------- catalogue
 
     fun builtIn(context: Context): List<Map<String, Any?>> {
         val entries = mutableListOf<Map<String, Any?>>()
@@ -55,7 +116,7 @@ object SoundLibrary {
                 }
             }
         }
-        return entries
+        return SoundVisibility.visible(entries, hiddenUris(context))
     }
 
     fun custom(context: Context): List<Map<String, Any?>> =
@@ -68,9 +129,9 @@ object SoundLibrary {
                     type = type,
                     uri = Uri.fromFile(file).toString(),
                     label = readableName(file.name),
-                    deletable = true,
                 )
             }
+            ?.let { SoundVisibility.visible(it, hiddenUris(context)) }
             ?: emptyList()
 
     /**
@@ -94,7 +155,7 @@ object SoundLibrary {
             target.delete()
             return null
         }
-        return descriptor(TYPE_IMPORTED, Uri.fromFile(target).toString(), readableName(target.name), deletable = true)
+        return descriptor(TYPE_IMPORTED, Uri.fromFile(target).toString(), readableName(target.name))
     }
 
     /** Destination for a new voice recording. */
@@ -107,7 +168,6 @@ object SoundLibrary {
         type = if (file.name.startsWith(RECORD_PREFIX)) TYPE_RECORDED else TYPE_IMPORTED,
         uri = Uri.fromFile(file).toString(),
         label = readableName(file.name),
-        deletable = true,
     )
 
     /** Deletes a custom sound. Refuses anything outside the app's own sound directory. */
@@ -147,11 +207,9 @@ object SoundLibrary {
         type: String,
         uri: String,
         label: String,
-        deletable: Boolean = false,
     ): Map<String, Any?> = mapOf(
         "type" to type,
         "uri" to uri,
         "label" to label,
-        "deletable" to deletable,
     )
 }

@@ -41,6 +41,10 @@ class FakeNativeBridge extends NativeBridge {
   Map<String, dynamic>? nextRecordingResult;
   bool recordingStarts = true;
 
+  /// URIs the user has hidden. Shared deliberately so a test can hand the same set to
+  /// a second bridge and simulate an app restart.
+  final Set<String> hiddenSounds = <String>{};
+
   // ------------------------------------------------------------ test controls
 
   /// Pushes a battery reading through the event channel, as the service would.
@@ -153,7 +157,16 @@ class FakeNativeBridge extends NativeBridge {
   @override
   Future<Map<dynamic, dynamic>> getSounds() async {
     calls.add('getSounds');
-    return Map<dynamic, dynamic>.from(_sounds);
+    List<Map<String, dynamic>> visible(String key) =>
+        (_sounds[key] as List)
+            .cast<Map<String, dynamic>>()
+            .where((sound) => !hiddenSounds.contains(sound['uri']))
+            .toList();
+    return <dynamic, dynamic>{
+      'builtIn': visible('builtIn'),
+      'custom': visible('custom'),
+      'hiddenCount': hiddenSounds.length,
+    };
   }
 
   @override
@@ -162,13 +175,32 @@ class FakeNativeBridge extends NativeBridge {
     return nextImportResult;
   }
 
+  /// Mirrors the native rule: a file the app owns is deleted, anything else is
+  /// hidden. Hidden URIs persist across `FakeNativeBridge` instances built from the
+  /// same [hiddenSounds] set, which is how restart persistence is tested.
   @override
-  Future<bool> deleteSound(String uri) async {
-    calls.add('deleteSound');
+  Future<Map<dynamic, dynamic>> removeSound(String uri) async {
+    calls.add('removeSound');
     final custom = (_sounds['custom'] as List).cast<Map<String, dynamic>>();
-    final before = custom.length;
-    custom.removeWhere((sound) => sound['uri'] == uri);
-    return custom.length != before;
+    final owned = custom.any((sound) => sound['uri'] == uri);
+
+    String outcome;
+    if (owned) {
+      custom.removeWhere((sound) => sound['uri'] == uri);
+      outcome = 'deleted';
+    } else {
+      hiddenSounds.add(uri);
+      outcome = 'hidden';
+    }
+    return {'outcome': outcome, 'hiddenCount': hiddenSounds.length};
+  }
+
+  @override
+  Future<int> restoreDefaultSounds() async {
+    calls.add('restoreDefaultSounds');
+    final restored = hiddenSounds.length;
+    hiddenSounds.clear();
+    return restored;
   }
 
   @override
@@ -249,13 +281,11 @@ class FakeNativeBridge extends NativeBridge {
             'type': 'builtin',
             'uri': 'content://settings/system/alarm_alert',
             'label': 'Default alarm',
-            'deletable': false,
           },
           {
             'type': 'builtin',
             'uri': 'content://media/internal/audio/media/12',
             'label': 'Oxygen',
-            'deletable': false,
           },
         ],
         'custom': <Map<String, dynamic>>[],

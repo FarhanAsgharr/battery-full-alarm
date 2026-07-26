@@ -412,17 +412,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get importCancelled => 'لم يتم اختيار أي ملف.';
 
   @override
-  String soundDeleteConfirm(String name) {
-    return 'حذف \"$name\"؟';
-  }
-
-  @override
-  String get soundDeleted => 'تم حذف الصوت.';
-
-  @override
-  String get soundInUseReset => 'تمت إعادة المنبّه إلى الصوت الافتراضي.';
-
-  @override
   String get historyTitle => 'سجل الشحن';
 
   @override
@@ -561,5 +550,65 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String percentValue(int value) {
     return '$value%';
+  }
+
+  @override
+  String get soundDeleteTitle => 'حذف صوت المنبّه؟';
+
+  @override
+  String get soundDeleteMessage => 'هل تريد بالتأكيد إزالة صوت المنبّه هذا؟';
+
+  @override
+  String get soundDeleteDeviceNote =>
+      'هذه إحدى نغمات جهازك. سيتم إخفاؤها من هذه القائمة فقط دون حذفها من الهاتف، ويمكنك استعادتها من الإعدادات.';
+
+  @override
+  String get soundDeletedFile => 'تم حذف الصوت.';
+
+  @override
+  String get soundHiddenFromList => 'تم إخفاء الصوت. استعده من الإعدادات.';
+
+  @override
+  String get soundActiveFallback =>
+      'كان هذا صوت المنبّه لديك، لذا عاد المنبّه إلى الصوت الافتراضي للجهاز.';
+
+  @override
+  String get soundNoneTitle => 'لا توجد أصوات في القائمة';
+
+  @override
+  String get soundNoneBody =>
+      'سيستخدم المنبّه الصوت الافتراضي لجهازك. استعد القائمة لاختيار صوت آخر.';
+
+  @override
+  String get settingRestoreSounds => 'استعادة الأصوات الافتراضية';
+
+  @override
+  String get settingRestoreSoundsNone => 'لا شيء مخفي';
+
+  @override
+  String settingRestoreSoundsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count أصوات مخفية',
+      one: 'صوت واحد مخفي',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get restoreSoundsConfirm =>
+      'هل تريد استعادة كل أصوات المنبّه التي أخفيتها؟';
+
+  @override
+  String soundsRestored(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'تمت استعادة $count أصوات',
+      one: 'تمت استعادة صوت واحد',
+      zero: 'لا شيء لاستعادته',
+    );
+    return '$_temp0';
   }
 }

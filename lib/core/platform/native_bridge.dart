@@ -59,8 +59,15 @@ class NativeBridge {
     return result;
   }
 
-  Future<bool> deleteSound(String uri) async =>
-      await _methods.invokeMethod<bool>('deleteSound', {'uri': uri}) ?? false;
+  /// Removes a sound. The platform decides whether that means deleting a file or
+  /// hiding a device ringtone, and reports which in the result.
+  Future<Map<dynamic, dynamic>> removeSound(String uri) async =>
+      await _methods.invokeMethod<Map<dynamic, dynamic>>('removeSound', {'uri': uri}) ??
+      const {};
+
+  /// Un-hides every hidden device sound. Returns how many came back.
+  Future<int> restoreDefaultSounds() async =>
+      await _methods.invokeMethod<int>('restoreDefaultSounds') ?? 0;
 
   Future<bool> startRecording(String label) async =>
       await _methods.invokeMethod<bool>('startRecording', {'label': label}) ?? false;

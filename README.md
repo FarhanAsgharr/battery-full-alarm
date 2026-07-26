@@ -125,8 +125,8 @@ all use the Android platform directly, so no extra package is needed for them.
 ## Tests
 
 ```bash
-flutter test                                    # 82 Dart unit and widget tests
-cd android && ./gradlew :app:testDebugUnitTest   # 36 Kotlin unit tests
+flutter test                                    # 98 Dart unit and widget tests
+cd android && ./gradlew :app:testDebugUnitTest   # 48 Kotlin unit tests
 flutter test integration_test -d <device-id>    # on-device end-to-end tests
 flutter analyze                                 # static analysis
 ```

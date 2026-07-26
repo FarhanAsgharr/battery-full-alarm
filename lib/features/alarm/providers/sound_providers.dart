@@ -20,6 +20,17 @@ final soundControllerProvider = Provider<SoundController>(
   (ref) => SoundController(ref),
 );
 
+/// Outcome of removing a sound, with enough detail for the UI to word the result.
+class SoundRemovalResult {
+  const SoundRemovalResult({required this.outcome, required this.wasActiveAlarm});
+
+  final AlarmSoundRemoval outcome;
+
+  /// True when the removed sound had been the selected alarm, and the selection has
+  /// therefore been reset to the device default.
+  final bool wasActiveAlarm;
+}
+
 class SoundController {
   SoundController(this._ref);
 
@@ -68,13 +79,24 @@ class SoundController {
     _ref.read(isRecordingProvider.notifier).state = false;
   }
 
-  /// Deletes a custom sound, falling back to the default tone if it was in use.
-  /// Returns true when the deleted sound was the selected one.
-  Future<bool> delete(AlarmSound sound) async {
-    await _repository.delete(sound);
+  /// Removes a sound from the picker.
+  ///
+  /// A file the user imported or recorded is deleted; a device ringtone is hidden and
+  /// can be brought back with [restoreDefaults]. If the sound was the active alarm, the
+  /// selection falls back to the device default so the alarm can never point at
+  /// something that is no longer there.
+  Future<SoundRemovalResult> remove(AlarmSound sound) async {
     final wasSelected = _ref.read(settingsProvider).soundUri == sound.uri;
+    final outcome = await _repository.remove(sound);
     if (wasSelected) await select(null);
     _ref.invalidate(soundLibraryProvider);
-    return wasSelected;
+    return SoundRemovalResult(outcome: outcome, wasActiveAlarm: wasSelected);
+  }
+
+  /// Brings back every hidden device sound. Returns how many were restored.
+  Future<int> restoreDefaults() async {
+    final restored = await _repository.restoreDefaults();
+    _ref.invalidate(soundLibraryProvider);
+    return restored;
   }
 }

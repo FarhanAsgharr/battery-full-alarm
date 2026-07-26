@@ -7,6 +7,7 @@ import '../../../core/router/app_router.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/widgets/section_card.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../alarm/providers/sound_providers.dart';
 import '../../battery/providers/battery_providers.dart';
 import '../../history/providers/history_providers.dart';
 import '../domain/app_settings.dart';
@@ -24,6 +25,8 @@ class SettingsScreen extends ConsumerWidget {
     final settings = ref.watch(settingsProvider);
     final controller = ref.read(settingsProvider.notifier);
     final capabilities = ref.watch(capabilitiesProvider).valueOrNull;
+    final hiddenSounds =
+        ref.watch(soundLibraryProvider).valueOrNull?.hiddenCount ?? 0;
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.settingsTitle)),
@@ -96,6 +99,20 @@ class SettingsScreen extends ConsumerWidget {
                 title: Text(l10n.settingSoundEnabled),
                 onChanged: (value) =>
                     controller.edit((current) => current.copyWith(soundEnabled: value)),
+              ),
+              // Device ringtones removed from the picker are hidden, not deleted, so
+              // there has to be a way back. Disabled when nothing is hidden rather than
+              // hidden itself, so the option is discoverable before it is needed.
+              ListTile(
+                enabled: hiddenSounds > 0,
+                leading: const Icon(Icons.restore_rounded),
+                title: Text(l10n.settingRestoreSounds),
+                subtitle: Text(
+                  hiddenSounds > 0
+                      ? l10n.settingRestoreSoundsCount(hiddenSounds)
+                      : l10n.settingRestoreSoundsNone,
+                ),
+                onTap: hiddenSounds > 0 ? () => _confirmRestoreSounds(context, ref) : null,
               ),
               ChoiceTile<int>(
                 icon: Icons.repeat_rounded,
@@ -258,6 +275,34 @@ class SettingsScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _confirmRestoreSounds(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context);
+    final messenger = ScaffoldMessenger.of(context);
+    final sounds = ref.read(soundControllerProvider);
+
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l10n.settingRestoreSounds),
+        content: Text(l10n.restoreSoundsConfirm),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text(l10n.actionCancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: Text(l10n.actionReset),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+
+    final restored = await sounds.restoreDefaults();
+    messenger.showSnackBar(SnackBar(content: Text(l10n.soundsRestored(restored))));
   }
 
   Future<void> _confirmClearHistory(BuildContext context, WidgetRef ref) async {

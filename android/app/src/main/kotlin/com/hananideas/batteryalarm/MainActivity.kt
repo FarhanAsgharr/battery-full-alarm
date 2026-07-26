@@ -179,15 +179,26 @@ class MainActivity : FlutterActivity() {
                 mapOf(
                     "builtIn" to SoundLibrary.builtIn(this),
                     "custom" to SoundLibrary.custom(this),
+                    "hiddenCount" to SoundLibrary.hiddenCount(this),
                 ),
             )
 
             "pickAudioFile" -> pickAudioFile(result)
 
-            "deleteSound" -> {
+            // One entry point for both kinds of removal. The UI does not decide whether
+            // a sound is deleted or hidden — SoundLibrary does, and reports which.
+            "removeSound" -> {
                 val uri = call.argument<String>("uri").orEmpty()
-                result.success(SoundLibrary.deleteCustom(this, uri))
+                previewPlayer.stopPreview()
+                result.success(
+                    mapOf(
+                        "outcome" to SoundLibrary.remove(this, uri),
+                        "hiddenCount" to SoundLibrary.hiddenCount(this),
+                    ),
+                )
             }
+
+            "restoreDefaultSounds" -> result.success(SoundLibrary.restoreAllHidden(this))
 
             "startRecording" -> {
                 val label = call.argument<String>("label").orEmpty()

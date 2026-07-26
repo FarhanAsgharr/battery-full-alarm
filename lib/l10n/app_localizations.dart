@@ -858,24 +858,6 @@ abstract class AppLocalizations {
   /// **'No file selected.'**
   String get importCancelled;
 
-  /// No description provided for @soundDeleteConfirm.
-  ///
-  /// In en, this message translates to:
-  /// **'Delete \"{name}\"?'**
-  String soundDeleteConfirm(String name);
-
-  /// No description provided for @soundDeleted.
-  ///
-  /// In en, this message translates to:
-  /// **'Sound deleted.'**
-  String get soundDeleted;
-
-  /// No description provided for @soundInUseReset.
-  ///
-  /// In en, this message translates to:
-  /// **'The alarm was switched back to the default sound.'**
-  String get soundInUseReset;
-
   /// No description provided for @historyTitle.
   ///
   /// In en, this message translates to:
@@ -1103,6 +1085,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{value}%'**
   String percentValue(int value);
+
+  /// No description provided for @soundDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete alarm sound?'**
+  String get soundDeleteTitle;
+
+  /// No description provided for @soundDeleteMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to remove this alarm sound?'**
+  String get soundDeleteMessage;
+
+  /// No description provided for @soundDeleteDeviceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This is one of your device\'s ringtones. It will be hidden from this list, not deleted from your phone, and you can restore it from Settings.'**
+  String get soundDeleteDeviceNote;
+
+  /// No description provided for @soundDeletedFile.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound deleted.'**
+  String get soundDeletedFile;
+
+  /// No description provided for @soundHiddenFromList.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound hidden. Restore it from Settings.'**
+  String get soundHiddenFromList;
+
+  /// No description provided for @soundActiveFallback.
+  ///
+  /// In en, this message translates to:
+  /// **'That was your alarm sound, so the alarm switched back to your device\'s default.'**
+  String get soundActiveFallback;
+
+  /// No description provided for @soundNoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No sounds in the list'**
+  String get soundNoneTitle;
+
+  /// No description provided for @soundNoneBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The alarm will use your device\'s default sound. Restore the built-in list to choose a different one.'**
+  String get soundNoneBody;
+
+  /// No description provided for @settingRestoreSounds.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore default sounds'**
+  String get settingRestoreSounds;
+
+  /// No description provided for @settingRestoreSoundsNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is hidden'**
+  String get settingRestoreSoundsNone;
+
+  /// No description provided for @settingRestoreSoundsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 sound hidden} other{{count} sounds hidden}}'**
+  String settingRestoreSoundsCount(int count);
+
+  /// No description provided for @restoreSoundsConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Bring back every alarm sound you have hidden?'**
+  String get restoreSoundsConfirm;
+
+  /// No description provided for @soundsRestored.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Nothing to restore} =1{1 sound restored} other{{count} sounds restored}}'**
+  String soundsRestored(int count);
 }
 
 class _AppLocalizationsDelegate

@@ -418,18 +418,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get importCancelled => 'No file selected.';
 
   @override
-  String soundDeleteConfirm(String name) {
-    return 'Delete \"$name\"?';
-  }
-
-  @override
-  String get soundDeleted => 'Sound deleted.';
-
-  @override
-  String get soundInUseReset =>
-      'The alarm was switched back to the default sound.';
-
-  @override
   String get historyTitle => 'Charging history';
 
   @override
@@ -569,5 +557,66 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String percentValue(int value) {
     return '$value%';
+  }
+
+  @override
+  String get soundDeleteTitle => 'Delete alarm sound?';
+
+  @override
+  String get soundDeleteMessage =>
+      'Are you sure you want to remove this alarm sound?';
+
+  @override
+  String get soundDeleteDeviceNote =>
+      'This is one of your device\'s ringtones. It will be hidden from this list, not deleted from your phone, and you can restore it from Settings.';
+
+  @override
+  String get soundDeletedFile => 'Sound deleted.';
+
+  @override
+  String get soundHiddenFromList => 'Sound hidden. Restore it from Settings.';
+
+  @override
+  String get soundActiveFallback =>
+      'That was your alarm sound, so the alarm switched back to your device\'s default.';
+
+  @override
+  String get soundNoneTitle => 'No sounds in the list';
+
+  @override
+  String get soundNoneBody =>
+      'The alarm will use your device\'s default sound. Restore the built-in list to choose a different one.';
+
+  @override
+  String get settingRestoreSounds => 'Restore default sounds';
+
+  @override
+  String get settingRestoreSoundsNone => 'Nothing is hidden';
+
+  @override
+  String settingRestoreSoundsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count sounds hidden',
+      one: '1 sound hidden',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get restoreSoundsConfirm =>
+      'Bring back every alarm sound you have hidden?';
+
+  @override
+  String soundsRestored(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count sounds restored',
+      one: '1 sound restored',
+      zero: 'Nothing to restore',
+    );
+    return '$_temp0';
   }
 }

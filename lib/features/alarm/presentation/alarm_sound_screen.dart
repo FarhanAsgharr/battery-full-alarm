@@ -99,13 +99,30 @@ class _AlarmSoundScreenState extends ConsumerState<AlarmSoundScreen> {
     if (!started) _snack(l10n.recordingFailed);
   }
 
-  Future<void> _delete(AlarmSound sound) async {
+  /// Confirms, then removes. The dialog explains the difference for device ringtones,
+  /// because "delete" meaning "hide" is otherwise a surprise.
+  Future<void> _remove(AlarmSound sound) async {
     final l10n = AppLocalizations.of(context);
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(l10n.actionDelete),
-        content: Text(l10n.soundDeleteConfirm(sound.label)),
+        title: Text(l10n.soundDeleteTitle),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(l10n.soundDeleteMessage),
+            if (sound.isDeviceSound) ...[
+              const SizedBox(height: 12),
+              Text(
+                l10n.soundDeleteDeviceNote,
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+              ),
+            ],
+          ],
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
@@ -120,8 +137,24 @@ class _AlarmSoundScreenState extends ConsumerState<AlarmSoundScreen> {
     );
     if (confirmed != true || !mounted) return;
 
-    final wasSelected = await _controller.delete(sound);
-    _snack(wasSelected ? l10n.soundInUseReset : l10n.soundDeleted);
+    final result = await _controller.remove(sound);
+    if (!mounted) return;
+
+    // The fallback matters more than the removal, so it wins the message.
+    if (result.wasActiveAlarm) {
+      _snack(l10n.soundActiveFallback);
+    } else if (result.outcome == AlarmSoundRemoval.deleted) {
+      _snack(l10n.soundDeletedFile);
+    } else {
+      _snack(l10n.soundHiddenFromList);
+    }
+  }
+
+  Future<void> _restoreDefaults() async {
+    final l10n = AppLocalizations.of(context);
+    final restored = await _controller.restoreDefaults();
+    if (!mounted) return;
+    _snack(l10n.soundsRestored(restored));
   }
 
   @override
@@ -177,7 +210,7 @@ class _AlarmSoundScreenState extends ConsumerState<AlarmSoundScreen> {
                   sound: sound,
                   selected: sound.uri == selectedUri,
                   onSelect: () => _select(sound),
-                  onDelete: () => _delete(sound),
+                  onDelete: () => _remove(sound),
                 ),
 
             Padding(
@@ -206,12 +239,47 @@ class _AlarmSoundScreenState extends ConsumerState<AlarmSoundScreen> {
             ),
 
             _Heading(l10n.soundBuiltIn),
+            // Requirement: when nothing is left, say so and explain that the alarm
+            // still works — it falls back to the device default.
+            if (data.builtIn.isEmpty)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.soundNoneTitle,
+                      style: theme.textTheme.bodyMedium
+                          ?.copyWith(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      l10n.soundNoneBody,
+                      style: theme.textTheme.bodySmall
+                          ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                    ),
+                  ],
+                ),
+              ),
             for (final sound in data.builtIn)
               _SoundTile(
                 sound: sound,
                 selected: sound.uri == selectedUri ||
                     (selectedUri.isEmpty && sound == data.builtIn.first),
                 onSelect: () => _select(sound),
+                // Requirement: every sound can be removed. For a device ringtone that
+                // means hiding it, which _remove explains in the dialog.
+                onDelete: () => _remove(sound),
+              ),
+
+            if (data.hiddenCount > 0)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
+                child: OutlinedButton.icon(
+                  onPressed: _restoreDefaults,
+                  icon: const Icon(Icons.restore_rounded),
+                  label: Text(l10n.settingRestoreSounds),
+                ),
               ),
           ],
         ),
@@ -247,13 +315,13 @@ class _SoundTile extends StatelessWidget {
     required this.sound,
     required this.selected,
     required this.onSelect,
-    this.onDelete,
+    required this.onDelete,
   });
 
   final AlarmSound sound;
   final bool selected;
   final VoidCallback onSelect;
-  final VoidCallback? onDelete;
+  final VoidCallback onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -278,11 +346,11 @@ class _SoundTile extends StatelessWidget {
         children: [
           if (selected)
             Icon(Icons.check_circle_rounded, color: theme.colorScheme.primary),
-          if (onDelete != null)
-            IconButton(
-              icon: const Icon(Icons.delete_outline_rounded),
-              onPressed: onDelete,
-            ),
+          IconButton(
+            tooltip: MaterialLocalizations.of(context).deleteButtonTooltip,
+            icon: const Icon(Icons.delete_outline_rounded),
+            onPressed: onDelete,
+          ),
         ],
       ),
       onTap: onSelect,

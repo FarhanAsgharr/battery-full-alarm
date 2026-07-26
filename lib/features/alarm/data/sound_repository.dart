@@ -20,7 +20,17 @@ class SoundRepository {
     return result == null ? null : AlarmSound.fromMap(result);
   }
 
-  Future<bool> delete(AlarmSound sound) => _bridge.deleteSound(sound.uri);
+  /// Removes a sound from the picker.
+  ///
+  /// A file the app owns is deleted; a device ringtone is hidden, because deleting it
+  /// would take the ringtone away from every other app on the phone.
+  Future<AlarmSoundRemoval> remove(AlarmSound sound) async {
+    final result = await _bridge.removeSound(sound.uri);
+    return AlarmSoundRemoval.fromName(result['outcome'] as String?);
+  }
+
+  /// Brings every hidden device sound back. Returns how many were restored.
+  Future<int> restoreDefaults() => _bridge.restoreDefaultSounds();
 
   Future<bool> startRecording(String label) => _bridge.startRecording(label);
 

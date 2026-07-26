@@ -1,12 +1,10 @@
 {
   "@@locale": "hi",
-
   "appTitle": "बैटरी फुल अलार्म",
   "navHome": "होम",
   "navHistory": "इतिहास",
   "navStats": "आँकड़े",
   "navSettings": "सेटिंग्स",
-
   "actionSave": "सहेजें",
   "actionCancel": "रद्द करें",
   "actionDelete": "हटाएँ",
@@ -15,35 +13,29 @@
   "actionOpenSettings": "सेटिंग्स खोलें",
   "actionAllow": "अनुमति दें",
   "actionNotNow": "अभी नहीं",
-
   "monitoringOn": "निगरानी चालू है",
   "monitoringOff": "निगरानी बंद है",
   "monitoringOnBody": "बैटरी 100% पहुँचते ही आपको सूचित किया जाएगा।",
   "monitoringOffBody": "चार्जिंग पूरी होने पर सूचना पाने के लिए इसे चालू करें।",
-
   "statusCharging": "चार्ज हो रही है",
   "statusFull": "पूरी तरह चार्ज",
   "statusDischarging": "बैटरी पर",
-
   "chargerAc": "एसी चार्जर",
   "chargerUsb": "यूएसबी",
   "chargerWireless": "वायरलेस",
   "chargerNone": "कनेक्ट नहीं है",
   "chargerOther": "बाहरी पावर",
-
   "alarmRinging": "अलार्म बज रहा है",
   "alarmRingingBody": "चार्जर निकालें, या इसे यहाँ से बंद करें।",
   "actionStopAlarm": "अलार्म बंद करें",
   "actionTestAlarm": "अलार्म जाँचें",
   "testAlarmStarted": "एक अलार्म चक्र चल रहा है…",
-
   "detailsTitle": "बैटरी विवरण",
   "detailTemperature": "तापमान",
   "detailVoltage": "वोल्टेज",
   "detailHealth": "स्थिति",
   "detailTechnology": "तकनीक",
   "detailCharger": "पावर स्रोत",
-
   "healthGood": "अच्छी",
   "healthOverheat": "अधिक गर्म",
   "healthDead": "खराब",
@@ -51,18 +43,35 @@
   "healthCold": "ठंडी",
   "healthFailure": "विफलता",
   "healthUnknown": "अज्ञात",
-
   "sessionTitle": "वर्तमान चार्जिंग सत्र",
   "sessionNone": "अभी चार्ज नहीं हो रही है।",
   "sessionStarted": "{time} पर शुरू हुआ",
-  "@sessionStarted": { "placeholders": { "time": { "type": "String" } } },
+  "@sessionStarted": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "sessionGained": "{from}% से {to}%",
   "@sessionGained": {
-    "placeholders": { "from": { "type": "int" }, "to": { "type": "int" } }
+    "placeholders": {
+      "from": {
+        "type": "int"
+      },
+      "to": {
+        "type": "int"
+      }
+    }
   },
   "sessionAlarms": "{count, plural, =0{अभी कोई अलार्म नहीं} =1{1 अलार्म बजा} other{{count} अलार्म बजे}}",
-  "@sessionAlarms": { "placeholders": { "count": { "type": "int" } } },
-
+  "@sessionAlarms": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "warnNotificationsTitle": "सूचनाएँ अवरुद्ध हैं",
   "warnNotificationsBody": "बैटरी निगरानी चालू रखने के लिए एंड्रॉइड को सूचना की अनुमति चाहिए।",
   "warnBatteryOptimTitle": "बैटरी ऑप्टिमाइज़ेशन चालू है",
@@ -72,7 +81,6 @@
   "warnTtsTitle": "इस भाषा के लिए आवाज़ उपलब्ध नहीं",
   "warnTtsBody": "अपने फ़ोन की टेक्स्ट-टू-स्पीच सेटिंग्स में वॉइस डेटा इंस्टॉल करें, अन्यथा अलार्म अंग्रेज़ी में बोलेगा।",
   "actionTtsSettings": "टेक्स्ट-टू-स्पीच सेटिंग्स",
-
   "settingsTitle": "सेटिंग्स",
   "sectionVoice": "आवाज़ घोषणा",
   "sectionAlarm": "अलार्म",
@@ -81,7 +89,6 @@
   "sectionAppearance": "रूप",
   "sectionData": "डेटा",
   "sectionAbout": "परिचय",
-
   "settingUserName": "आपका नाम",
   "settingUserNameHint": "बोले जाने वाले संदेश में उपयोग होगा",
   "settingUserNameEmpty": "सेट नहीं है",
@@ -110,20 +117,22 @@
   "settingBatteryOptimization": "पृष्ठभूमि प्रतिबंध",
   "settingBatteryOptimizationOk": "अप्रतिबंधित — अलार्म भरोसेमंद हैं",
   "settingBatteryOptimizationBad": "प्रतिबंधित — अलार्म में देरी हो सकती है",
-
   "themeSystem": "सिस्टम",
   "themeLight": "हल्की",
   "themeDark": "गहरी",
-
   "languageEnglish": "English",
   "languageUrdu": "اردو",
   "languageArabic": "العربية",
   "languageHindi": "हिन्दी",
-
   "intervalSeconds": "{count} सेकंड",
-  "@intervalSeconds": { "placeholders": { "count": { "type": "int" } } },
+  "@intervalSeconds": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "intervalMinute": "1 मिनट",
-
   "voiceTitle": "आवाज़ घोषणा",
   "voiceMessageLabel": "फ़ोन को क्या कहना चाहिए?",
   "voiceMessageHelp": "जोड़ने के लिए टैग पर टैप करें। संदेश बोलते समय टैग बदल दिए जाते हैं।",
@@ -135,7 +144,6 @@
   "voicePresets": "सुझाव",
   "voiceMessageEmpty": "घोषणा खाली नहीं हो सकती।",
   "voiceResetDefault": "डिफ़ॉल्ट संदेश वापस लाएँ",
-
   "soundTitle": "अलार्म की ध्वनि",
   "soundBuiltIn": "इस डिवाइस पर",
   "soundCustom": "आपकी ध्वनियाँ",
@@ -149,11 +157,6 @@
   "recordingPermission": "अलार्म रिकॉर्ड करने के लिए माइक्रोफ़ोन की अनुमति चाहिए।",
   "importFailed": "वह फ़ाइल आयात नहीं हो सकी।",
   "importCancelled": "कोई फ़ाइल नहीं चुनी गई।",
-  "soundDeleteConfirm": "\"{name}\" हटाएँ?",
-  "@soundDeleteConfirm": { "placeholders": { "name": { "type": "String" } } },
-  "soundDeleted": "ध्वनि हटा दी गई।",
-  "soundInUseReset": "अलार्म वापस डिफ़ॉल्ट ध्वनि पर सेट कर दिया गया।",
-
   "historyTitle": "चार्जिंग इतिहास",
   "historyEmpty": "अभी तक कोई चार्जिंग सत्र दर्ज नहीं हुआ।",
   "historyEmptyBody": "चार्जर लगाएँ, सत्र यहाँ दिखाई देगा।",
@@ -163,13 +166,30 @@
   "historyEntryDeleted": "प्रविष्टि हटा दी गई।",
   "historyInProgress": "जारी है",
   "historyReachedFull": "{duration} में 100% तक पहुँचा",
-  "@historyReachedFull": { "placeholders": { "duration": { "type": "String" } } },
+  "@historyReachedFull": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "historyNeverFull": "100% तक नहीं पहुँचा",
   "historyPluggedFor": "{duration} तक लगा रहा",
-  "@historyPluggedFor": { "placeholders": { "duration": { "type": "String" } } },
+  "@historyPluggedFor": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "historyAlarms": "{count, plural, =0{कोई अलार्म नहीं} =1{1 अलार्म} other{{count} अलार्म}}",
-  "@historyAlarms": { "placeholders": { "count": { "type": "int" } } },
-
+  "@historyAlarms": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "statsTitle": "आँकड़े",
   "statsDaily": "आज",
   "statsWeekly": "इस सप्ताह",
@@ -183,31 +203,95 @@
   "statsAvgStartLevel": "प्लग लगाते समय औसत स्तर",
   "statsEnergyGained": "औसत चार्ज वृद्धि",
   "statsChartTitle": "प्रतिदिन सत्र",
-
   "aboutTitle": "परिचय",
   "aboutVersion": "संस्करण {version} ({build})",
   "@aboutVersion": {
-    "placeholders": { "version": { "type": "String" }, "build": { "type": "String" } }
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "build": {
+        "type": "String"
+      }
+    }
   },
   "aboutDevice": "एंड्रॉइड {release} (API {sdk})",
   "@aboutDevice": {
-    "placeholders": { "release": { "type": "String" }, "sdk": { "type": "int" } }
+    "placeholders": {
+      "release": {
+        "type": "String"
+      },
+      "sdk": {
+        "type": "int"
+      }
+    }
   },
   "aboutOfflineTitle": "पूरी तरह ऑफ़लाइन काम करता है",
   "aboutOfflineBody": "इस ऐप के पास इंटरनेट अनुमति नहीं है। आपका नाम, संदेश, रिकॉर्डिंग और इतिहास कभी फ़ोन से बाहर नहीं जाते।",
   "aboutPermissionsTitle": "उपयोग की गई अनुमतियाँ",
   "aboutHowItWorksTitle": "यह कैसे काम करता है",
   "aboutHowItWorksBody": "एक फ़ोरग्राउंड सेवा सिस्टम के बैटरी ब्रॉडकास्ट पर नज़र रखती है। चार्जर लगे होने पर जैसे ही स्तर 100% पहुँचता है, अलार्म ध्वनि, बोला गया संदेश, कंपन और टॉर्च आपके चुने अंतराल पर तब तक दोहराए जाते हैं जब तक आप चार्जर न निकालें।",
-
   "durationHoursMinutes": "{hours} घं {minutes} मि",
   "@durationHoursMinutes": {
-    "placeholders": { "hours": { "type": "int" }, "minutes": { "type": "int" } }
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
   },
   "durationMinutes": "{minutes} मि",
-  "@durationMinutes": { "placeholders": { "minutes": { "type": "int" } } },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
   "durationSeconds": "{seconds} से",
-  "@durationSeconds": { "placeholders": { "seconds": { "type": "int" } } },
+  "@durationSeconds": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
   "valueUnavailable": "—",
   "percentValue": "{value}%",
-  "@percentValue": { "placeholders": { "value": { "type": "int" } } }
+  "@percentValue": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "soundDeleteTitle": "अलार्म ध्वनि हटाएँ?",
+  "soundDeleteMessage": "क्या आप वाकई यह अलार्म ध्वनि हटाना चाहते हैं?",
+  "soundDeleteDeviceNote": "यह आपके डिवाइस की रिंगटोन है। इसे केवल इस सूची से छिपाया जाएगा, फ़ोन से मिटाया नहीं जाएगा, और आप इसे सेटिंग्स से वापस ला सकते हैं।",
+  "soundDeletedFile": "ध्वनि हटा दी गई।",
+  "soundHiddenFromList": "ध्वनि छिपा दी गई। सेटिंग्स से वापस लाएँ।",
+  "soundActiveFallback": "यह आपकी अलार्म ध्वनि थी, इसलिए अलार्म वापस डिवाइस की डिफ़ॉल्ट ध्वनि पर चला गया।",
+  "soundNoneTitle": "सूची में कोई ध्वनि नहीं",
+  "soundNoneBody": "अलार्म आपके डिवाइस की डिफ़ॉल्ट ध्वनि का उपयोग करेगा। दूसरी ध्वनि चुनने के लिए सूची वापस लाएँ।",
+  "settingRestoreSounds": "डिफ़ॉल्ट ध्वनियाँ वापस लाएँ",
+  "settingRestoreSoundsNone": "कुछ भी छिपा नहीं है",
+  "settingRestoreSoundsCount": "{count, plural, =1{1 ध्वनि छिपी है} other{{count} ध्वनियाँ छिपी हैं}}",
+  "@settingRestoreSoundsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "restoreSoundsConfirm": "क्या आपकी छिपाई गई सभी अलार्म ध्वनियाँ वापस लाई जाएँ?",
+  "soundsRestored": "{count, plural, =0{वापस लाने को कुछ नहीं} =1{1 ध्वनि वापस आई} other{{count} ध्वनियाँ वापस आईं}}",
+  "@soundsRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

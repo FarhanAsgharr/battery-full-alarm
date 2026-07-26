@@ -1,12 +1,10 @@
 {
   "@@locale": "ur",
-
   "appTitle": "بیٹری فُل الارم",
   "navHome": "ہوم",
   "navHistory": "تاریخ",
   "navStats": "اعداد و شمار",
   "navSettings": "ترتیبات",
-
   "actionSave": "محفوظ کریں",
   "actionCancel": "منسوخ کریں",
   "actionDelete": "حذف کریں",
@@ -15,35 +13,29 @@
   "actionOpenSettings": "ترتیبات کھولیں",
   "actionAllow": "اجازت دیں",
   "actionNotNow": "ابھی نہیں",
-
   "monitoringOn": "نگرانی فعال ہے",
   "monitoringOff": "نگرانی بند ہے",
   "monitoringOnBody": "بیٹری 100% ہوتے ہی آپ کو اطلاع دی جائے گی۔",
   "monitoringOffBody": "چارجنگ مکمل ہونے پر اطلاع کے لیے اسے آن کریں۔",
-
   "statusCharging": "چارج ہو رہی ہے",
   "statusFull": "مکمل چارج",
   "statusDischarging": "بیٹری پر",
-
   "chargerAc": "اے سی چارجر",
   "chargerUsb": "یو ایس بی",
   "chargerWireless": "وائرلیس",
   "chargerNone": "منسلک نہیں",
   "chargerOther": "بیرونی پاور",
-
   "alarmRinging": "الارم بج رہا ہے",
   "alarmRingingBody": "چارجر نکال دیں، یا یہاں سے بند کریں۔",
   "actionStopAlarm": "الارم بند کریں",
   "actionTestAlarm": "الارم آزمائیں",
   "testAlarmStarted": "ایک الارم سائیکل چل رہا ہے…",
-
   "detailsTitle": "بیٹری کی تفصیلات",
   "detailTemperature": "درجہ حرارت",
   "detailVoltage": "وولٹیج",
   "detailHealth": "صحت",
   "detailTechnology": "ٹیکنالوجی",
   "detailCharger": "پاور ذریعہ",
-
   "healthGood": "بہتر",
   "healthOverheat": "زیادہ گرم",
   "healthDead": "ناکارہ",
@@ -51,18 +43,35 @@
   "healthCold": "ٹھنڈی",
   "healthFailure": "خرابی",
   "healthUnknown": "نامعلوم",
-
   "sessionTitle": "موجودہ چارجنگ سیشن",
   "sessionNone": "اس وقت چارج نہیں ہو رہی۔",
   "sessionStarted": "{time} پر شروع ہوا",
-  "@sessionStarted": { "placeholders": { "time": { "type": "String" } } },
+  "@sessionStarted": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "sessionGained": "{from}% سے {to}%",
   "@sessionGained": {
-    "placeholders": { "from": { "type": "int" }, "to": { "type": "int" } }
+    "placeholders": {
+      "from": {
+        "type": "int"
+      },
+      "to": {
+        "type": "int"
+      }
+    }
   },
   "sessionAlarms": "{count, plural, =0{ابھی کوئی الارم نہیں} =1{1 الارم بجا} other{{count} الارم بجے}}",
-  "@sessionAlarms": { "placeholders": { "count": { "type": "int" } } },
-
+  "@sessionAlarms": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "warnNotificationsTitle": "اطلاعات بلاک ہیں",
   "warnNotificationsBody": "بیٹری کی نگرانی جاری رکھنے کے لیے اینڈرائیڈ کو اطلاعات کی اجازت درکار ہے۔",
   "warnBatteryOptimTitle": "بیٹری آپٹیمائزیشن فعال ہے",
@@ -72,7 +81,6 @@
   "warnTtsTitle": "اس زبان کے لیے آواز دستیاب نہیں",
   "warnTtsBody": "اپنے فون کی ٹیکسٹ ٹو اسپیچ ترتیبات میں وائس ڈیٹا انسٹال کریں، ورنہ الارم انگریزی میں بولے گا۔",
   "actionTtsSettings": "ٹیکسٹ ٹو اسپیچ ترتیبات",
-
   "settingsTitle": "ترتیبات",
   "sectionVoice": "صوتی اعلان",
   "sectionAlarm": "الارم",
@@ -81,7 +89,6 @@
   "sectionAppearance": "ظاہری شکل",
   "sectionData": "ڈیٹا",
   "sectionAbout": "تعارف",
-
   "settingUserName": "آپ کا نام",
   "settingUserNameHint": "بولے جانے والے پیغام میں استعمال ہوگا",
   "settingUserNameEmpty": "مقرر نہیں",
@@ -110,20 +117,22 @@
   "settingBatteryOptimization": "پس منظر کی پابندیاں",
   "settingBatteryOptimizationOk": "غیر محدود — الارم قابلِ اعتماد ہیں",
   "settingBatteryOptimizationBad": "محدود — الارم میں تاخیر ہو سکتی ہے",
-
   "themeSystem": "سسٹم",
   "themeLight": "روشن",
   "themeDark": "تاریک",
-
   "languageEnglish": "English",
   "languageUrdu": "اردو",
   "languageArabic": "العربية",
   "languageHindi": "हिन्दी",
-
   "intervalSeconds": "{count} سیکنڈ",
-  "@intervalSeconds": { "placeholders": { "count": { "type": "int" } } },
+  "@intervalSeconds": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "intervalMinute": "1 منٹ",
-
   "voiceTitle": "صوتی اعلان",
   "voiceMessageLabel": "فون کو کیا کہنا چاہیے؟",
   "voiceMessageHelp": "داخل کرنے کے لیے ٹیگ پر ٹیپ کریں۔ پیغام بولتے وقت ٹیگ تبدیل ہو جاتے ہیں۔",
@@ -135,7 +144,6 @@
   "voicePresets": "تجاویز",
   "voiceMessageEmpty": "اعلان خالی نہیں ہو سکتا۔",
   "voiceResetDefault": "ڈیفالٹ پیغام بحال کریں",
-
   "soundTitle": "الارم کی آواز",
   "soundBuiltIn": "اس ڈیوائس پر",
   "soundCustom": "آپ کی آوازیں",
@@ -149,11 +157,6 @@
   "recordingPermission": "الارم ریکارڈ کرنے کے لیے مائیکروفون کی اجازت درکار ہے۔",
   "importFailed": "یہ فائل درآمد نہیں ہو سکی۔",
   "importCancelled": "کوئی فائل منتخب نہیں کی گئی۔",
-  "soundDeleteConfirm": "\"{name}\" حذف کریں؟",
-  "@soundDeleteConfirm": { "placeholders": { "name": { "type": "String" } } },
-  "soundDeleted": "آواز حذف ہو گئی۔",
-  "soundInUseReset": "الارم واپس ڈیفالٹ آواز پر منتقل کر دیا گیا۔",
-
   "historyTitle": "چارجنگ کی تاریخ",
   "historyEmpty": "ابھی کوئی چارجنگ سیشن ریکارڈ نہیں ہوا۔",
   "historyEmptyBody": "چارجر لگائیں، سیشن یہاں ظاہر ہوگا۔",
@@ -163,13 +166,30 @@
   "historyEntryDeleted": "اندراج حذف ہو گیا۔",
   "historyInProgress": "جاری ہے",
   "historyReachedFull": "{duration} میں 100% تک پہنچا",
-  "@historyReachedFull": { "placeholders": { "duration": { "type": "String" } } },
+  "@historyReachedFull": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "historyNeverFull": "100% تک نہیں پہنچا",
   "historyPluggedFor": "{duration} تک لگا رہا",
-  "@historyPluggedFor": { "placeholders": { "duration": { "type": "String" } } },
+  "@historyPluggedFor": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "historyAlarms": "{count, plural, =0{کوئی الارم نہیں} =1{1 الارم} other{{count} الارم}}",
-  "@historyAlarms": { "placeholders": { "count": { "type": "int" } } },
-
+  "@historyAlarms": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "statsTitle": "اعداد و شمار",
   "statsDaily": "آج",
   "statsWeekly": "اس ہفتے",
@@ -183,31 +203,95 @@
   "statsAvgStartLevel": "پلگ لگاتے وقت اوسط سطح",
   "statsEnergyGained": "اوسط چارج اضافہ",
   "statsChartTitle": "روزانہ سیشنز",
-
   "aboutTitle": "تعارف",
   "aboutVersion": "ورژن {version} ({build})",
   "@aboutVersion": {
-    "placeholders": { "version": { "type": "String" }, "build": { "type": "String" } }
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "build": {
+        "type": "String"
+      }
+    }
   },
   "aboutDevice": "اینڈرائیڈ {release} (API {sdk})",
   "@aboutDevice": {
-    "placeholders": { "release": { "type": "String" }, "sdk": { "type": "int" } }
+    "placeholders": {
+      "release": {
+        "type": "String"
+      },
+      "sdk": {
+        "type": "int"
+      }
+    }
   },
   "aboutOfflineTitle": "مکمل طور پر آف لائن کام کرتا ہے",
   "aboutOfflineBody": "اس ایپ کو انٹرنیٹ کی اجازت نہیں ہے۔ آپ کا نام، پیغام، ریکارڈنگز اور تاریخ کبھی فون سے باہر نہیں جاتے۔",
   "aboutPermissionsTitle": "استعمال شدہ اجازتیں",
   "aboutHowItWorksTitle": "یہ کیسے کام کرتا ہے",
   "aboutHowItWorksBody": "ایک فورگراؤنڈ سروس سسٹم کے بیٹری براڈکاسٹ کو دیکھتی ہے۔ چارجر لگے ہونے کی حالت میں جیسے ہی سطح 100% ہوتی ہے، الارم کی آواز، بولا گیا پیغام، وائبریشن اور ٹارچ آپ کے منتخب وقفے سے دہرائے جاتے ہیں جب تک آپ چارجر نہ نکال دیں۔",
-
   "durationHoursMinutes": "{hours} گھنٹے {minutes} منٹ",
   "@durationHoursMinutes": {
-    "placeholders": { "hours": { "type": "int" }, "minutes": { "type": "int" } }
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
   },
   "durationMinutes": "{minutes} منٹ",
-  "@durationMinutes": { "placeholders": { "minutes": { "type": "int" } } },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
   "durationSeconds": "{seconds} سیکنڈ",
-  "@durationSeconds": { "placeholders": { "seconds": { "type": "int" } } },
+  "@durationSeconds": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
   "valueUnavailable": "—",
   "percentValue": "{value}%",
-  "@percentValue": { "placeholders": { "value": { "type": "int" } } }
+  "@percentValue": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "soundDeleteTitle": "الارم کی آواز حذف کریں؟",
+  "soundDeleteMessage": "کیا آپ واقعی یہ الارم آواز ہٹانا چاہتے ہیں؟",
+  "soundDeleteDeviceNote": "یہ آپ کی ڈیوائس کی رنگ ٹون ہے۔ اسے صرف اس فہرست سے چھپایا جائے گا، فون سے حذف نہیں کیا جائے گا، اور آپ اسے ترتیبات سے بحال کر سکتے ہیں۔",
+  "soundDeletedFile": "آواز حذف ہو گئی۔",
+  "soundHiddenFromList": "آواز چھپا دی گئی۔ ترتیبات سے بحال کریں۔",
+  "soundActiveFallback": "یہ آپ کی الارم آواز تھی، اس لیے الارم واپس ڈیوائس کی ڈیفالٹ آواز پر منتقل ہو گیا۔",
+  "soundNoneTitle": "فہرست میں کوئی آواز نہیں",
+  "soundNoneBody": "الارم آپ کی ڈیوائس کی ڈیفالٹ آواز استعمال کرے گا۔ کوئی اور آواز منتخب کرنے کے لیے فہرست بحال کریں۔",
+  "settingRestoreSounds": "ڈیفالٹ آوازیں بحال کریں",
+  "settingRestoreSoundsNone": "کچھ چھپا ہوا نہیں",
+  "settingRestoreSoundsCount": "{count, plural, =1{1 آواز چھپی ہوئی} other{{count} آوازیں چھپی ہوئی}}",
+  "@settingRestoreSoundsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "restoreSoundsConfirm": "کیا آپ کی چھپائی ہوئی تمام الارم آوازیں واپس لائی جائیں؟",
+  "soundsRestored": "{count, plural, =0{بحال کرنے کو کچھ نہیں} =1{1 آواز بحال ہو گئی} other{{count} آوازیں بحال ہو گئیں}}",
+  "@soundsRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

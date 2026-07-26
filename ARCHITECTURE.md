@@ -39,6 +39,7 @@ data/
   ChargeSession.kt      One charger-in → charger-out cycle
   HistoryStore.kt       JSON log in private SharedPreferences (capped at 500)
   SoundLibrary.kt       Device ringtones + imported/recorded files
+  SoundVisibility.kt    Which sounds the picker shows — pure, JVM-testable
 alarm/
   AlarmPlayer.kt        The burst → speak → wait → repeat cycle
   SpeechEngine.kt       TextToSpeech wrapper, alarm stream, async-init safe
@@ -122,6 +123,23 @@ the service back, and a new instance assumes nothing about the old one:
   value would be lost with it and the user's alarm volume would stay pinned to whatever
   this app chose. It is therefore written to disk *before* the change, and restored by
   whichever component starts next.
+
+### "Deleting" a device ringtone means hiding it
+
+The sounds under *On this device* are not files the app owns — they come from
+`RingtoneManager`, so they are the phone's own ringtones. Deleting one would take it
+away from the clock app and every other alarm app, which is not a thing a battery
+alarm should be able to do.
+
+So `SoundLibrary.remove` decides for the caller: a file inside the app's own sound
+folder is deleted, anything else has its URI added to a hidden set that the catalogue
+filters out. The UI never makes that decision; it only reports which happened. Hiding
+persists in the same preferences file as everything else, so it survives a restart —
+and `restoreAllHidden` empties the set from Settings.
+
+If the removed sound was the selected alarm, the selection resets to empty, which
+resolves to the device default at play time. That is the same fallback `AlarmPlayer`
+already uses, so the alarm can never point at something that is no longer there.
 
 ### Settings are stored twice, deliberately
 
@@ -224,7 +242,7 @@ synchronously and the first frame already has the user's theme and language.
 | `test/widget/` | Home, settings, alarm sound picker, history and statistics screens against `FakeNativeBridge` |
 | `integration_test/` | Real launch on a device, against the real Kotlin service |
 
-Counts at the time of writing: 36 Kotlin, 82 Dart.
+Counts at the time of writing: 48 Kotlin, 98 Dart.
 
 The message-formatting cases exist in both Kotlin and Dart on purpose: the in-app
 preview and the sentence the service speaks come from two separate implementations,

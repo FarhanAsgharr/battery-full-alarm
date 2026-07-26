@@ -1,12 +1,10 @@
 {
   "@@locale": "ar",
-
   "appTitle": "منبّه اكتمال البطارية",
   "navHome": "الرئيسية",
   "navHistory": "السجل",
   "navStats": "الإحصائيات",
   "navSettings": "الإعدادات",
-
   "actionSave": "حفظ",
   "actionCancel": "إلغاء",
   "actionDelete": "حذف",
@@ -15,35 +13,29 @@
   "actionOpenSettings": "فتح الإعدادات",
   "actionAllow": "السماح",
   "actionNotNow": "ليس الآن",
-
   "monitoringOn": "المراقبة مفعّلة",
   "monitoringOff": "المراقبة متوقفة",
   "monitoringOnBody": "سيتم تنبيهك فور وصول البطارية إلى 100%.",
   "monitoringOffBody": "فعّل هذا الخيار ليتم تنبيهك عند اكتمال الشحن.",
-
   "statusCharging": "قيد الشحن",
   "statusFull": "مشحونة بالكامل",
   "statusDischarging": "تعمل على البطارية",
-
   "chargerAc": "شاحن كهربائي",
   "chargerUsb": "USB",
   "chargerWireless": "لاسلكي",
   "chargerNone": "غير متصل",
   "chargerOther": "مصدر طاقة خارجي",
-
   "alarmRinging": "المنبّه يعمل",
   "alarmRingingBody": "افصل الشاحن، أو أوقفه من هنا.",
   "actionStopAlarm": "إيقاف المنبّه",
   "actionTestAlarm": "تجربة المنبّه",
   "testAlarmStarted": "يتم تشغيل دورة منبّه واحدة…",
-
   "detailsTitle": "تفاصيل البطارية",
   "detailTemperature": "درجة الحرارة",
   "detailVoltage": "الجهد",
   "detailHealth": "الحالة",
   "detailTechnology": "التقنية",
   "detailCharger": "مصدر الطاقة",
-
   "healthGood": "جيدة",
   "healthOverheat": "ارتفاع في الحرارة",
   "healthDead": "تالفة",
@@ -51,18 +43,35 @@
   "healthCold": "باردة",
   "healthFailure": "عطل",
   "healthUnknown": "غير معروفة",
-
   "sessionTitle": "جلسة الشحن الحالية",
   "sessionNone": "لا يتم الشحن حالياً.",
   "sessionStarted": "بدأت الساعة {time}",
-  "@sessionStarted": { "placeholders": { "time": { "type": "String" } } },
+  "@sessionStarted": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "sessionGained": "من {from}% إلى {to}%",
   "@sessionGained": {
-    "placeholders": { "from": { "type": "int" }, "to": { "type": "int" } }
+    "placeholders": {
+      "from": {
+        "type": "int"
+      },
+      "to": {
+        "type": "int"
+      }
+    }
   },
   "sessionAlarms": "{count, plural, =0{لا توجد منبّهات بعد} =1{تم تشغيل منبّه واحد} other{تم تشغيل {count} منبّهات}}",
-  "@sessionAlarms": { "placeholders": { "count": { "type": "int" } } },
-
+  "@sessionAlarms": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "warnNotificationsTitle": "الإشعارات محظورة",
   "warnNotificationsBody": "يحتاج أندرويد إلى إذن الإشعارات لاستمرار مراقبة البطارية.",
   "warnBatteryOptimTitle": "تحسين البطارية مفعّل",
@@ -72,7 +81,6 @@
   "warnTtsTitle": "الصوت غير متوفر لهذه اللغة",
   "warnTtsBody": "ثبّت بيانات الصوت من إعدادات تحويل النص إلى كلام في جهازك، وإلا سينطق المنبّه بالإنجليزية.",
   "actionTtsSettings": "إعدادات تحويل النص إلى كلام",
-
   "settingsTitle": "الإعدادات",
   "sectionVoice": "الإعلان الصوتي",
   "sectionAlarm": "المنبّه",
@@ -81,7 +89,6 @@
   "sectionAppearance": "المظهر",
   "sectionData": "البيانات",
   "sectionAbout": "حول التطبيق",
-
   "settingUserName": "اسمك",
   "settingUserNameHint": "يُستخدم في الرسالة المنطوقة",
   "settingUserNameEmpty": "غير محدد",
@@ -110,20 +117,22 @@
   "settingBatteryOptimization": "قيود الخلفية",
   "settingBatteryOptimizationOk": "بدون قيود — المنبّه موثوق",
   "settingBatteryOptimizationBad": "مقيّد — قد يتأخر المنبّه",
-
   "themeSystem": "النظام",
   "themeLight": "فاتحة",
   "themeDark": "داكنة",
-
   "languageEnglish": "English",
   "languageUrdu": "اردو",
   "languageArabic": "العربية",
   "languageHindi": "हिन्दी",
-
   "intervalSeconds": "{count} ثانية",
-  "@intervalSeconds": { "placeholders": { "count": { "type": "int" } } },
+  "@intervalSeconds": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "intervalMinute": "دقيقة واحدة",
-
   "voiceTitle": "الإعلان الصوتي",
   "voiceMessageLabel": "ماذا يقول الهاتف؟",
   "voiceMessageHelp": "اضغط على وسم لإدراجه. تُستبدل الوسوم عند نطق الرسالة.",
@@ -135,7 +144,6 @@
   "voicePresets": "اقتراحات",
   "voiceMessageEmpty": "لا يمكن ترك نص الإعلان فارغاً.",
   "voiceResetDefault": "استعادة الرسالة الافتراضية",
-
   "soundTitle": "صوت المنبّه",
   "soundBuiltIn": "على هذا الجهاز",
   "soundCustom": "أصواتك",
@@ -149,11 +157,6 @@
   "recordingPermission": "يلزم إذن الميكروفون لتسجيل منبّه.",
   "importFailed": "تعذّر استيراد هذا الملف.",
   "importCancelled": "لم يتم اختيار أي ملف.",
-  "soundDeleteConfirm": "حذف \"{name}\"؟",
-  "@soundDeleteConfirm": { "placeholders": { "name": { "type": "String" } } },
-  "soundDeleted": "تم حذف الصوت.",
-  "soundInUseReset": "تمت إعادة المنبّه إلى الصوت الافتراضي.",
-
   "historyTitle": "سجل الشحن",
   "historyEmpty": "لم يتم تسجيل أي جلسة شحن بعد.",
   "historyEmptyBody": "وصّل الشاحن وستظهر الجلسة هنا.",
@@ -163,13 +166,30 @@
   "historyEntryDeleted": "تم حذف العنصر.",
   "historyInProgress": "جارية",
   "historyReachedFull": "وصلت إلى 100% خلال {duration}",
-  "@historyReachedFull": { "placeholders": { "duration": { "type": "String" } } },
+  "@historyReachedFull": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "historyNeverFull": "لم تصل إلى 100%",
   "historyPluggedFor": "بقيت موصولة {duration}",
-  "@historyPluggedFor": { "placeholders": { "duration": { "type": "String" } } },
+  "@historyPluggedFor": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "historyAlarms": "{count, plural, =0{بدون منبّهات} =1{منبّه واحد} other{{count} منبّهات}}",
-  "@historyAlarms": { "placeholders": { "count": { "type": "int" } } },
-
+  "@historyAlarms": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "statsTitle": "الإحصائيات",
   "statsDaily": "اليوم",
   "statsWeekly": "هذا الأسبوع",
@@ -183,31 +203,95 @@
   "statsAvgStartLevel": "متوسط المستوى عند التوصيل",
   "statsEnergyGained": "متوسط الشحن المكتسب",
   "statsChartTitle": "الجلسات لكل يوم",
-
   "aboutTitle": "حول التطبيق",
   "aboutVersion": "الإصدار {version} ({build})",
   "@aboutVersion": {
-    "placeholders": { "version": { "type": "String" }, "build": { "type": "String" } }
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "build": {
+        "type": "String"
+      }
+    }
   },
   "aboutDevice": "أندرويد {release} (API {sdk})",
   "@aboutDevice": {
-    "placeholders": { "release": { "type": "String" }, "sdk": { "type": "int" } }
+    "placeholders": {
+      "release": {
+        "type": "String"
+      },
+      "sdk": {
+        "type": "int"
+      }
+    }
   },
   "aboutOfflineTitle": "يعمل دون اتصال بالكامل",
   "aboutOfflineBody": "لا يملك هذا التطبيق إذن الإنترنت. اسمك ورسالتك وتسجيلاتك وسجلك لا تغادر الهاتف أبداً.",
   "aboutPermissionsTitle": "الأذونات المستخدمة",
   "aboutHowItWorksTitle": "كيف يعمل",
   "aboutHowItWorksBody": "تراقب خدمة أمامية بث البطارية في النظام. وعند بلوغ المستوى 100% مع توصيل الشاحن، يتكرر صوت المنبّه والرسالة المنطوقة والاهتزاز والكشاف بالفاصل الزمني الذي اخترته حتى تفصل الشاحن.",
-
   "durationHoursMinutes": "{hours} س {minutes} د",
   "@durationHoursMinutes": {
-    "placeholders": { "hours": { "type": "int" }, "minutes": { "type": "int" } }
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
   },
   "durationMinutes": "{minutes} د",
-  "@durationMinutes": { "placeholders": { "minutes": { "type": "int" } } },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
   "durationSeconds": "{seconds} ث",
-  "@durationSeconds": { "placeholders": { "seconds": { "type": "int" } } },
+  "@durationSeconds": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
   "valueUnavailable": "—",
   "percentValue": "{value}%",
-  "@percentValue": { "placeholders": { "value": { "type": "int" } } }
+  "@percentValue": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "soundDeleteTitle": "حذف صوت المنبّه؟",
+  "soundDeleteMessage": "هل تريد بالتأكيد إزالة صوت المنبّه هذا؟",
+  "soundDeleteDeviceNote": "هذه إحدى نغمات جهازك. سيتم إخفاؤها من هذه القائمة فقط دون حذفها من الهاتف، ويمكنك استعادتها من الإعدادات.",
+  "soundDeletedFile": "تم حذف الصوت.",
+  "soundHiddenFromList": "تم إخفاء الصوت. استعده من الإعدادات.",
+  "soundActiveFallback": "كان هذا صوت المنبّه لديك، لذا عاد المنبّه إلى الصوت الافتراضي للجهاز.",
+  "soundNoneTitle": "لا توجد أصوات في القائمة",
+  "soundNoneBody": "سيستخدم المنبّه الصوت الافتراضي لجهازك. استعد القائمة لاختيار صوت آخر.",
+  "settingRestoreSounds": "استعادة الأصوات الافتراضية",
+  "settingRestoreSoundsNone": "لا شيء مخفي",
+  "settingRestoreSoundsCount": "{count, plural, =1{صوت واحد مخفي} other{{count} أصوات مخفية}}",
+  "@settingRestoreSoundsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "restoreSoundsConfirm": "هل تريد استعادة كل أصوات المنبّه التي أخفيتها؟",
+  "soundsRestored": "{count, plural, =0{لا شيء لاستعادته} =1{تمت استعادة صوت واحد} other{تمت استعادة {count} أصوات}}",
+  "@soundsRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

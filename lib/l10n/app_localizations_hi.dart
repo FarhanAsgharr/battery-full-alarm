@@ -417,18 +417,6 @@ class AppLocalizationsHi extends AppLocalizations {
   String get importCancelled => 'कोई फ़ाइल नहीं चुनी गई।';
 
   @override
-  String soundDeleteConfirm(String name) {
-    return '\"$name\" हटाएँ?';
-  }
-
-  @override
-  String get soundDeleted => 'ध्वनि हटा दी गई।';
-
-  @override
-  String get soundInUseReset =>
-      'अलार्म वापस डिफ़ॉल्ट ध्वनि पर सेट कर दिया गया।';
-
-  @override
   String get historyTitle => 'चार्जिंग इतिहास';
 
   @override
@@ -567,5 +555,66 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String percentValue(int value) {
     return '$value%';
+  }
+
+  @override
+  String get soundDeleteTitle => 'अलार्म ध्वनि हटाएँ?';
+
+  @override
+  String get soundDeleteMessage =>
+      'क्या आप वाकई यह अलार्म ध्वनि हटाना चाहते हैं?';
+
+  @override
+  String get soundDeleteDeviceNote =>
+      'यह आपके डिवाइस की रिंगटोन है। इसे केवल इस सूची से छिपाया जाएगा, फ़ोन से मिटाया नहीं जाएगा, और आप इसे सेटिंग्स से वापस ला सकते हैं।';
+
+  @override
+  String get soundDeletedFile => 'ध्वनि हटा दी गई।';
+
+  @override
+  String get soundHiddenFromList => 'ध्वनि छिपा दी गई। सेटिंग्स से वापस लाएँ।';
+
+  @override
+  String get soundActiveFallback =>
+      'यह आपकी अलार्म ध्वनि थी, इसलिए अलार्म वापस डिवाइस की डिफ़ॉल्ट ध्वनि पर चला गया।';
+
+  @override
+  String get soundNoneTitle => 'सूची में कोई ध्वनि नहीं';
+
+  @override
+  String get soundNoneBody =>
+      'अलार्म आपके डिवाइस की डिफ़ॉल्ट ध्वनि का उपयोग करेगा। दूसरी ध्वनि चुनने के लिए सूची वापस लाएँ।';
+
+  @override
+  String get settingRestoreSounds => 'डिफ़ॉल्ट ध्वनियाँ वापस लाएँ';
+
+  @override
+  String get settingRestoreSoundsNone => 'कुछ भी छिपा नहीं है';
+
+  @override
+  String settingRestoreSoundsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ध्वनियाँ छिपी हैं',
+      one: '1 ध्वनि छिपी है',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get restoreSoundsConfirm =>
+      'क्या आपकी छिपाई गई सभी अलार्म ध्वनियाँ वापस लाई जाएँ?';
+
+  @override
+  String soundsRestored(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ध्वनियाँ वापस आईं',
+      one: '1 ध्वनि वापस आई',
+      zero: 'वापस लाने को कुछ नहीं',
+    );
+    return '$_temp0';
   }
 }

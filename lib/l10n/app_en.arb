@@ -1,12 +1,10 @@
 {
   "@@locale": "en",
-
   "appTitle": "Battery Full Alarm",
   "navHome": "Home",
   "navHistory": "History",
   "navStats": "Statistics",
   "navSettings": "Settings",
-
   "actionSave": "Save",
   "actionCancel": "Cancel",
   "actionDelete": "Delete",
@@ -15,35 +13,29 @@
   "actionOpenSettings": "Open settings",
   "actionAllow": "Allow",
   "actionNotNow": "Not now",
-
   "monitoringOn": "Monitoring is on",
   "monitoringOff": "Monitoring is off",
   "monitoringOnBody": "You will be alerted the moment the battery reaches 100%.",
   "monitoringOffBody": "Turn this on to be alerted when charging completes.",
-
   "statusCharging": "Charging",
   "statusFull": "Fully charged",
   "statusDischarging": "On battery",
-
   "chargerAc": "AC charger",
   "chargerUsb": "USB",
   "chargerWireless": "Wireless",
   "chargerNone": "Not connected",
   "chargerOther": "External power",
-
   "alarmRinging": "Alarm is ringing",
   "alarmRingingBody": "Unplug the charger, or stop it here.",
   "actionStopAlarm": "Stop alarm",
   "actionTestAlarm": "Test alarm",
   "testAlarmStarted": "Playing one alarm cycle…",
-
   "detailsTitle": "Battery details",
   "detailTemperature": "Temperature",
   "detailVoltage": "Voltage",
   "detailHealth": "Health",
   "detailTechnology": "Technology",
   "detailCharger": "Power source",
-
   "healthGood": "Good",
   "healthOverheat": "Overheating",
   "healthDead": "Dead",
@@ -51,18 +43,35 @@
   "healthCold": "Cold",
   "healthFailure": "Failure",
   "healthUnknown": "Unknown",
-
   "sessionTitle": "Current charging session",
   "sessionNone": "Not charging right now.",
   "sessionStarted": "Started at {time}",
-  "@sessionStarted": { "placeholders": { "time": { "type": "String" } } },
+  "@sessionStarted": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "sessionGained": "{from}% → {to}%",
   "@sessionGained": {
-    "placeholders": { "from": { "type": "int" }, "to": { "type": "int" } }
+    "placeholders": {
+      "from": {
+        "type": "int"
+      },
+      "to": {
+        "type": "int"
+      }
+    }
   },
   "sessionAlarms": "{count, plural, =0{No alarms yet} =1{1 alarm played} other{{count} alarms played}}",
-  "@sessionAlarms": { "placeholders": { "count": { "type": "int" } } },
-
+  "@sessionAlarms": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "warnNotificationsTitle": "Notifications are blocked",
   "warnNotificationsBody": "Android needs notification access to keep battery monitoring running.",
   "warnBatteryOptimTitle": "Battery optimisation is on",
@@ -72,7 +81,6 @@
   "warnTtsTitle": "Voice not available for this language",
   "warnTtsBody": "Install the voice data in your device's text-to-speech settings, or the alarm will speak English.",
   "actionTtsSettings": "Text-to-speech settings",
-
   "settingsTitle": "Settings",
   "sectionVoice": "Voice announcement",
   "sectionAlarm": "Alarm",
@@ -81,7 +89,6 @@
   "sectionAppearance": "Appearance",
   "sectionData": "Data",
   "sectionAbout": "About",
-
   "settingUserName": "Your name",
   "settingUserNameHint": "Used in the spoken message",
   "settingUserNameEmpty": "Not set",
@@ -110,20 +117,22 @@
   "settingBatteryOptimization": "Background restrictions",
   "settingBatteryOptimizationOk": "Unrestricted — alarms are reliable",
   "settingBatteryOptimizationBad": "Restricted — alarms may be delayed",
-
   "themeSystem": "System",
   "themeLight": "Light",
   "themeDark": "Dark",
-
   "languageEnglish": "English",
   "languageUrdu": "اردو",
   "languageArabic": "العربية",
   "languageHindi": "हिन्दी",
-
   "intervalSeconds": "{count} seconds",
-  "@intervalSeconds": { "placeholders": { "count": { "type": "int" } } },
+  "@intervalSeconds": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "intervalMinute": "1 minute",
-
   "voiceTitle": "Voice announcement",
   "voiceMessageLabel": "What should the phone say?",
   "voiceMessageHelp": "Tap a tag to insert it. Tags are replaced when the message is spoken.",
@@ -135,7 +144,6 @@
   "voicePresets": "Suggestions",
   "voiceMessageEmpty": "The announcement cannot be empty.",
   "voiceResetDefault": "Restore the default message",
-
   "soundTitle": "Alarm sound",
   "soundBuiltIn": "On this device",
   "soundCustom": "Your sounds",
@@ -149,11 +157,6 @@
   "recordingPermission": "Microphone access is needed to record an alarm.",
   "importFailed": "That file could not be imported.",
   "importCancelled": "No file selected.",
-  "soundDeleteConfirm": "Delete \"{name}\"?",
-  "@soundDeleteConfirm": { "placeholders": { "name": { "type": "String" } } },
-  "soundDeleted": "Sound deleted.",
-  "soundInUseReset": "The alarm was switched back to the default sound.",
-
   "historyTitle": "Charging history",
   "historyEmpty": "No charging sessions recorded yet.",
   "historyEmptyBody": "Plug in your charger and the session will appear here.",
@@ -163,13 +166,30 @@
   "historyEntryDeleted": "Entry deleted.",
   "historyInProgress": "In progress",
   "historyReachedFull": "Reached 100% in {duration}",
-  "@historyReachedFull": { "placeholders": { "duration": { "type": "String" } } },
+  "@historyReachedFull": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "historyNeverFull": "Did not reach 100%",
   "historyPluggedFor": "Plugged in for {duration}",
-  "@historyPluggedFor": { "placeholders": { "duration": { "type": "String" } } },
+  "@historyPluggedFor": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "historyAlarms": "{count, plural, =0{No alarms} =1{1 alarm} other{{count} alarms}}",
-  "@historyAlarms": { "placeholders": { "count": { "type": "int" } } },
-
+  "@historyAlarms": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "statsTitle": "Statistics",
   "statsDaily": "Today",
   "statsWeekly": "This week",
@@ -183,31 +203,95 @@
   "statsAvgStartLevel": "Average level when plugged in",
   "statsEnergyGained": "Average charge gained",
   "statsChartTitle": "Sessions per day",
-
   "aboutTitle": "About",
   "aboutVersion": "Version {version} ({build})",
   "@aboutVersion": {
-    "placeholders": { "version": { "type": "String" }, "build": { "type": "String" } }
+    "placeholders": {
+      "version": {
+        "type": "String"
+      },
+      "build": {
+        "type": "String"
+      }
+    }
   },
   "aboutDevice": "Android {release} (API {sdk})",
   "@aboutDevice": {
-    "placeholders": { "release": { "type": "String" }, "sdk": { "type": "int" } }
+    "placeholders": {
+      "release": {
+        "type": "String"
+      },
+      "sdk": {
+        "type": "int"
+      }
+    }
   },
   "aboutOfflineTitle": "Works completely offline",
   "aboutOfflineBody": "This app has no internet permission. Your name, message, recordings and history never leave the phone.",
   "aboutPermissionsTitle": "Permissions used",
   "aboutHowItWorksTitle": "How it works",
   "aboutHowItWorksBody": "A foreground service watches the system battery broadcast. When the level hits 100% while a charger is attached, the alarm sound, spoken message, vibration and torch repeat at your chosen interval until you unplug.",
-
   "durationHoursMinutes": "{hours}h {minutes}m",
   "@durationHoursMinutes": {
-    "placeholders": { "hours": { "type": "int" }, "minutes": { "type": "int" } }
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
   },
   "durationMinutes": "{minutes}m",
-  "@durationMinutes": { "placeholders": { "minutes": { "type": "int" } } },
+  "@durationMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
   "durationSeconds": "{seconds}s",
-  "@durationSeconds": { "placeholders": { "seconds": { "type": "int" } } },
+  "@durationSeconds": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
   "valueUnavailable": "—",
   "percentValue": "{value}%",
-  "@percentValue": { "placeholders": { "value": { "type": "int" } } }
+  "@percentValue": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "soundDeleteTitle": "Delete alarm sound?",
+  "soundDeleteMessage": "Are you sure you want to remove this alarm sound?",
+  "soundDeleteDeviceNote": "This is one of your device's ringtones. It will be hidden from this list, not deleted from your phone, and you can restore it from Settings.",
+  "soundDeletedFile": "Sound deleted.",
+  "soundHiddenFromList": "Sound hidden. Restore it from Settings.",
+  "soundActiveFallback": "That was your alarm sound, so the alarm switched back to your device's default.",
+  "soundNoneTitle": "No sounds in the list",
+  "soundNoneBody": "The alarm will use your device's default sound. Restore the built-in list to choose a different one.",
+  "settingRestoreSounds": "Restore default sounds",
+  "settingRestoreSoundsNone": "Nothing is hidden",
+  "settingRestoreSoundsCount": "{count, plural, =1{1 sound hidden} other{{count} sounds hidden}}",
+  "@settingRestoreSoundsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "restoreSoundsConfirm": "Bring back every alarm sound you have hidden?",
+  "soundsRestored": "{count, plural, =0{Nothing to restore} =1{1 sound restored} other{{count} sounds restored}}",
+  "@soundsRestored": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }
