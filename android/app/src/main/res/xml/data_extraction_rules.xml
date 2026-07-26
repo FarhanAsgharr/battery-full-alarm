@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android 12+ backup rules.
+
+  Everything this app stores is private to the user and to this device: their name and
+  announcement, the charging log, and any alarm clips they recorded. None of it is
+  copied off the device, so both cloud backup and device-to-device transfer exclude the
+  whole app. Re-configuring four settings on a new phone is a smaller cost than
+  quietly shipping a recording of someone's voice to a server.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="root" />
+        <exclude domain="file" />
+        <exclude domain="database" />
+        <exclude domain="sharedpref" />
+        <exclude domain="external" />
+    </device-transfer>
+</data-extraction-rules>

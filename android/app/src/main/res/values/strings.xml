@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Battery Full Alarm</string>
+
+    <string name="notif_channel_monitor_name">Battery monitoring</string>
+    <string name="notif_channel_monitor_desc">Ongoing notification shown while the battery is being monitored.</string>
+    <string name="notif_channel_alarm_name">Full battery alarm</string>
+    <string name="notif_channel_alarm_desc">Shown while the full-battery alarm is sounding.</string>
+
+    <string name="notif_monitor_title">Battery monitor active</string>
+    <string name="notif_monitor_text">%1$d%% · %2$s · Monitoring</string>
+    <string name="notif_monitor_paused">Monitoring paused</string>
+
+    <string name="notif_alarm_title">Battery fully charged</string>
+    <string name="notif_alarm_text">Unplug the charger to stop the alarm.</string>
+    <string name="action_stop_alarm">Stop alarm</string>
+
+    <string name="status_charging">Charging</string>
+    <string name="status_full">Fully charged</string>
+    <string name="status_discharging">On battery</string>
+    <string name="status_not_charging">Not charging</string>
+</resources>

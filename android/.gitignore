@@ -1,0 +1,13 @@
+# The Gradle wrapper IS committed on purpose: without it a fresh clone cannot
+# build, and the wrapper is what pins everyone to the same Gradle version.
+/.gradle
+/captures/
+/local.properties
+GeneratedPluginRegistrant.java
+.cxx/
+
+# Remember to never publicly share your keystore.
+# See https://flutter.dev/to/reference-keystore
+key.properties
+**/*.keystore
+**/*.jks

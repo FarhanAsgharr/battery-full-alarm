@@ -1,0 +1,42 @@
+name: battery_full_alarm
+description: >-
+  Battery Full Voice Alarm — speaks a custom message and sounds an alarm when
+  your phone reaches 100% while charging. 100% offline, no accounts, no cloud.
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State management — MIT
+  flutter_riverpod: ^2.6.1
+  # Declarative routing — BSD-3-Clause
+  go_router: ^16.2.4
+  # Local key/value storage — BSD-3-Clause
+  shared_preferences: ^2.5.3
+  # Runtime permission requests — MIT
+  permission_handler: ^12.0.1
+  # Date/number formatting + localization messages — BSD-3-Clause
+  intl: ^0.20.2
+  # App version shown on the About screen — BSD-3-Clause
+  package_info_plus: ^8.3.1
+  # Android version shown on the About screen — BSD-3-Clause
+  device_info_plus: ^11.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true

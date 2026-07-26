@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">बैटरी फुल अलार्म</string>
+
+    <string name="notif_channel_monitor_name">बैटरी निगरानी</string>
+    <string name="notif_channel_monitor_desc">बैटरी की निगरानी के दौरान दिखाई जाने वाली लगातार सूचना।</string>
+    <string name="notif_channel_alarm_name">फुल बैटरी अलार्म</string>
+    <string name="notif_channel_alarm_desc">बैटरी पूरी होने का अलार्म बजते समय दिखाया जाता है।</string>
+
+    <string name="notif_monitor_title">बैटरी मॉनिटर सक्रिय</string>
+    <string name="notif_monitor_text">%1$d%% · %2$s · निगरानी जारी</string>
+    <string name="notif_monitor_paused">निगरानी रोकी गई</string>
+
+    <string name="notif_alarm_title">बैटरी पूरी चार्ज हो गई</string>
+    <string name="notif_alarm_text">अलार्म बंद करने के लिए चार्जर निकालें।</string>
+    <string name="action_stop_alarm">अलार्म बंद करें</string>
+
+    <string name="status_charging">चार्ज हो रही है</string>
+    <string name="status_full">पूरी तरह चार्ज</string>
+    <string name="status_discharging">बैटरी पर</string>
+    <string name="status_not_charging">चार्ज नहीं हो रही</string>
+</resources>

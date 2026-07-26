@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">منبّه اكتمال البطارية</string>
+
+    <string name="notif_channel_monitor_name">مراقبة البطارية</string>
+    <string name="notif_channel_monitor_desc">إشعار مستمر يظهر أثناء مراقبة البطارية.</string>
+    <string name="notif_channel_alarm_name">منبّه البطارية الممتلئة</string>
+    <string name="notif_channel_alarm_desc">يظهر أثناء تشغيل منبّه اكتمال البطارية.</string>
+
+    <string name="notif_monitor_title">مراقبة البطارية نشطة</string>
+    <string name="notif_monitor_text">%1$d%% · %2$s · جارٍ المراقبة</string>
+    <string name="notif_monitor_paused">تم إيقاف المراقبة مؤقتًا</string>
+
+    <string name="notif_alarm_title">البطارية مشحونة بالكامل</string>
+    <string name="notif_alarm_text">افصل الشاحن لإيقاف المنبّه.</string>
+    <string name="action_stop_alarm">إيقاف المنبّه</string>
+
+    <string name="status_charging">قيد الشحن</string>
+    <string name="status_full">مشحونة بالكامل</string>
+    <string name="status_discharging">تعمل على البطارية</string>
+    <string name="status_not_charging">لا يتم الشحن</string>
+</resources>

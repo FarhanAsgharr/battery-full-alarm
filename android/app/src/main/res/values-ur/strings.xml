@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">بیٹری فُل الارم</string>
+
+    <string name="notif_channel_monitor_name">بیٹری کی نگرانی</string>
+    <string name="notif_channel_monitor_desc">بیٹری کی نگرانی کے دوران دکھائی جانے والی مسلسل اطلاع۔</string>
+    <string name="notif_channel_alarm_name">مکمل بیٹری الارم</string>
+    <string name="notif_channel_alarm_desc">بیٹری مکمل ہونے کا الارم بجنے کے دوران دکھایا جاتا ہے۔</string>
+
+    <string name="notif_monitor_title">بیٹری مانیٹر فعال ہے</string>
+    <string name="notif_monitor_text">%1$d%% · %2$s · نگرانی جاری</string>
+    <string name="notif_monitor_paused">نگرانی روکی گئی ہے</string>
+
+    <string name="notif_alarm_title">بیٹری مکمل چارج ہو گئی</string>
+    <string name="notif_alarm_text">الارم بند کرنے کے لیے چارجر نکال دیں۔</string>
+    <string name="action_stop_alarm">الارم بند کریں</string>
+
+    <string name="status_charging">چارج ہو رہی ہے</string>
+    <string name="status_full">مکمل چارج</string>
+    <string name="status_discharging">بیٹری پر</string>
+    <string name="status_not_charging">چارج نہیں ہو رہی</string>
+</resources>
